@@ -30,6 +30,9 @@
     <!--映射文件-->
     <mappers>
         <mapper resource="com/lpms/dao/TestDAO.xml"/>
+        <mapper resource="com/lpms/dao/DeviceDAO.xml"/>
+        <mapper resource="com/lpms/dao/RoleDAO.xml"/>
+        <mapper resource="com/lpms/dao/UserDAO.xml"/>
     </mappers>
 
 

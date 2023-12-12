@@ -50,5 +50,6 @@ Thumbs.db
 
 # 项目特别配置 #
 jdbc.properties
+pom.xml
 *.dumpstream
 *.lst
