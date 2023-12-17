@@ -25,13 +25,21 @@ public interface PlantDao {
     int insterPlant(String plant_name,int species_id,int place_id );
 
 
+
+
     /**
      * 修改
      */
 
+    //修改植物生长周期
+    int upadatePlantgrowth(int plant_id, int growth_id );
 
 
 
+    /**
+     * 删除
+     */
+    int deletePlantById(int plant_id );
 
 
 
