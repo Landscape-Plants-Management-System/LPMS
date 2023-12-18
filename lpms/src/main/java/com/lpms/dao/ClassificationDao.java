@@ -1,6 +1,6 @@
 package com.lpms.dao;
 
-import com.lpms.pojo.Classification.*;
+import com.lpms.pojo.classification.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

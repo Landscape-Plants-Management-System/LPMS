@@ -1,4 +1,4 @@
-package com.lpms.pojo.Classification;
+package com.lpms.pojo.classification;
 
 public class Species {
     private Long speciesId; //种ID，主键

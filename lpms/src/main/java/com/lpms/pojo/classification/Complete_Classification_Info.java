@@ -1,4 +1,4 @@
-package com.lpms.pojo.Classification;
+package com.lpms.pojo.classification;
 
 public class Complete_Classification_Info {
     String familyName;//科

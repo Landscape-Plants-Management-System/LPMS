@@ -1,4 +1,4 @@
-package com.lpms.pojo.Classification;
+package com.lpms.pojo.classification;
 
 public class Species_Distribution {
     private Long speciesDistributionId;//关系ID，主键

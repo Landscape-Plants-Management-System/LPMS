@@ -1,7 +1,7 @@
 package com.lpms.dao.impl;
 
 import com.lpms.dao.ClassificationDao;
-import com.lpms.pojo.Classification.*;
+import com.lpms.pojo.classification.*;
 import com.lpms.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 

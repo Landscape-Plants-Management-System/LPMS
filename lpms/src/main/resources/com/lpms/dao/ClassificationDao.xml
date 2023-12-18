@@ -5,68 +5,68 @@
 <mapper namespace="com.lpms.dao.ClassificationDao">
     <!-- 查询 -->
     <!-- 科 -->
-    <select id="listFamilies" resultType="com.lpms.pojo.Classification.Family">
+    <select id="listFamilies" resultType="com.lpms.pojo.classification.Family">
         select * from family;
     </select>
-    <select id="getFamilyByFamilyId" resultType="com.lpms.pojo.Classification.Family">
+    <select id="getFamilyByFamilyId" resultType="com.lpms.pojo.classification.Family">
         select * from family where family_id=#{family_id};
     </select>
-    <select id="getFamilyByFamilyName" resultType="com.lpms.pojo.Classification.Family">
+    <select id="getFamilyByFamilyName" resultType="com.lpms.pojo.classification.Family">
         select * from family where family_name=#{family_name};
     </select>
 
     <!-- 属 -->
-    <select id="listGenuses" resultType="com.lpms.pojo.Classification.Genus">
+    <select id="listGenuses" resultType="com.lpms.pojo.classification.Genus">
         select * from genus;
     </select>
-    <select id="getGenusByGenusId" resultType="com.lpms.pojo.Classification.Genus">
+    <select id="getGenusByGenusId" resultType="com.lpms.pojo.classification.Genus">
         select * from genus where genus_id=#{genus_id};
     </select>
-    <select id="getGenusByGenusName" resultType="com.lpms.pojo.Classification.Genus">
+    <select id="getGenusByGenusName" resultType="com.lpms.pojo.classification.Genus">
         select * from genus where genus_name=#{genus_name};
     </select>
 
     <!-- 种 -->
-    <select id="listSpecies" resultType="com.lpms.pojo.Classification.Species">
+    <select id="listSpecies" resultType="com.lpms.pojo.classification.Species">
         select * from species;
     </select>
-    <select id="getSpeciesBySpeciesId" resultType="com.lpms.pojo.Classification.Species">
+    <select id="getSpeciesBySpeciesId" resultType="com.lpms.pojo.classification.Species">
         select * from species where species_id=#{species_id};
     </select>
-    <select id="getSpeciesBySpeciesName" resultType="com.lpms.pojo.Classification.Species">
+    <select id="getSpeciesBySpeciesName" resultType="com.lpms.pojo.classification.Species">
         select * from species where species_name=#{species_name};
     </select>
 
     <!-- 分布区域 -->
-    <select id="listDistributions" resultType="com.lpms.pojo.Classification.Distribution">
+    <select id="listDistributions" resultType="com.lpms.pojo.classification.Distribution">
         select * from distribution;
     </select>
-    <select id="getFamilyByDistributionId" resultType="com.lpms.pojo.Classification.Distribution">
+    <select id="getFamilyByDistributionId" resultType="com.lpms.pojo.classification.Distribution">
         select * from distribution where distribution_id=#{distribution_id};
     </select>
-    <select id="getFamilyByDistributionName" resultType="com.lpms.pojo.Classification.Distribution">
+    <select id="getFamilyByDistributionName" resultType="com.lpms.pojo.classification.Distribution">
         select * from distribution where distribution_provincial like CONCAT('%', #{distribution_provincial}, '%');
     </select>
 
     <!-- 生长环境 -->
-    <select id="listEnvironment" resultType="com.lpms.pojo.Classification.Environment">
+    <select id="listEnvironment" resultType="com.lpms.pojo.classification.Environment">
         select * from environment;
     </select>
-    <select id="getEnvironmentByEnvironmentId" resultType="com.lpms.pojo.Classification.Environment">
+    <select id="getEnvironmentByEnvironmentId" resultType="com.lpms.pojo.classification.Environment">
         select * from environment where environment_id=#{environment_id};
     </select>
-    <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Classification.Environment">
+    <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.classification.Environment">
         select * from environment where environment_name like concat('%', #{environment_name}, '%');
     </select>
 
     <!-- 生长周期 -->
-    <select id="listGrowth" resultType="com.lpms.pojo.Classification.Growth">
+    <select id="listGrowth" resultType="com.lpms.pojo.classification.Growth">
         select * from growth;
     </select>
-    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Classification.Growth">
+    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.classification.Growth">
         select * from growth where growth_id=#{growth_id};
     </select>
-    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.Classification.Growth">
+    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.classification.Growth">
         select * from growth where growth_name=#{growth_name};
     </select>
 
@@ -180,7 +180,7 @@
     </update>
 
     <!-- 查看简易的植物分类信息，也可用于生长环境的模糊查询 -->
-    <select id="getSimpleClassificationInfo" resultType="com.lpms.pojo.Classification.Simple_Classification_Info">
+    <select id="getSimpleClassificationInfo" resultType="com.lpms.pojo.classification.Simple_Classification_Info">
         SELECT family_name,genus_name,species_name,environment_name
         FROM simple_classification_info_v
         WHERE family_name LIKE CONCAT('%', #{keyword}, '%')
@@ -191,12 +191,12 @@
     </select>
 
     <!-- 查看完整的植物分类信息 -->
-    <select id="getCompleteClassificationInfo" resultType="com.lpms.pojo.Classification.Complete_Classification_Info">
+    <select id="getCompleteClassificationInfo" resultType="com.lpms.pojo.classification.Complete_Classification_Info">
         SELECT * FROM all_classification_info_v;
     </select>
 
     <!-- 根据指定属性查找下属的植物情况 -->
-    <select id="findSubordinatePlants" resultType="com.lpms.pojo.Classification.Family_Genus_Species_Info">
+    <select id="findSubordinatePlants" resultType="com.lpms.pojo.classification.Family_Genus_Species_Info">
         SELECT family_name, genus_name, species_name
         FROM family_genus_species_info_v
         WHERE (family_name = #{keyword} OR family_id = #{keyword} OR genus_name = #{keyword} OR genus_id = #{keyword}
