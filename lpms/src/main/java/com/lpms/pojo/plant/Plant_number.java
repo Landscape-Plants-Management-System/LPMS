@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.plant;
 
 public class Plant_number {
    private String plant_name;
