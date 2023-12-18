@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lpms.dao.RoleDAO">
+
+<!--    List<Role> listRoles();-->
+    <select id="listRoles" resultType="com.lpms.pojo.Role">
+        select * from role
+    </select>
+<!--    Role getRoleById(@Param("roleId")Integer roleId);-->
+    <select id="getRoleById" resultType="com.lpms.pojo.Role">
+        select * from role where role_id=#{roleId}
+    </select>
+<!--    List<Role> listRolesByName(@Param("roleName")String roleName);-->
+    <select id="listRolesByName" resultType="com.lpms.pojo.Role">
+        select * from role where role_name=#{roleName}
+    </select>
+<!--    List<Role> listRolesBySysPrivilege();-->
+    <select id="listRolesBySysPrivilege" resultType="com.lpms.pojo.Role">
+        select * from role where system_privilege=1
+    </select>
+
+
+<!--    void insertRole(Role role);-->
+    <insert id="insertRole">
+        insert into role (role_id, role_name, system_privilege)
+        VALUES (null,#{roleName},#{systemPrivilege})
+    </insert>
+
+
+<!--    void updateRole(Role role);-->
+    <update id="updateRole">
+        update role set role_name=#{roleName},system_privilege=#{systemPrivilege}
+        where role_id=#{roleId}
+    </update>
+
+
+<!--    void deleteRoleById(@Param("roleId")Integer roleId);-->
+    <delete id="deleteRoleById">
+        delete from role where role_id=#{roleId};
+    </delete>
+<!--    void deleteRoleByName(@Param("roleName")String roleName);-->
+    <delete id="deleteRoleByName">
+        delete from role where role_name=#{roleName};
+    </delete>
+
+</mapper>

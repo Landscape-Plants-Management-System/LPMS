@@ -33,8 +33,6 @@
         <mapper resource="com/lpms/dao/DeviceDAO.xml"/>
         <mapper resource="com/lpms/dao/RoleDAO.xml"/>
         <mapper resource="com/lpms/dao/UserDAO.xml"/>
-        <mapper resource="com/lpms/dao/PlantDAO.xml"/>
-        <mapper resource="com/lpms/dao/MonitoringRecordDAO.xml"/>
     </mappers>
 
 
