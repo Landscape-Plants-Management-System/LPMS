@@ -54,25 +54,25 @@ public class AppController {
                 //上级主管部门页面功能
                 System.out.println("主管部门登陆成功");
                 DeptInChargeController deptInChargeController=new DeptInChargeController();
-
+                deptInChargeController.indexIn();
                 break;
             case 2:
                 //系统管理员功能
                 System.out.println("系统管理员登陆成功");
                 SysAdminController sysAdminController=new SysAdminController();
-
+                sysAdminController.indexIn();
                 break;
             case 3:
                 //监测人员功能
                 System.out.println("监测人员登陆成功");
                 MonPersonnelController monPersonnelController=new MonPersonnelController();
-
+                monPersonnelController.indexIn();
                 break;
             case 4:
                 //养护人员
                 System.out.println("养护人员登陆成功");
                 MaintenancePersonnelController maintenancePersonnelController=new MaintenancePersonnelController();
-
+                maintenancePersonnelController.indexIn();
                 break;
         }
     }

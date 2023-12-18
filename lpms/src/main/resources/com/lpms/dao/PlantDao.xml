@@ -7,9 +7,11 @@
     <select id="selectPlantByName" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
         SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
     </select>
-    <select id=" selectAllPlant" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
-        SELECT * FROM plant
+
+    <select id="selectAllPlant" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
+        SELECT * FROM plant_info_v
     </select>
+
     <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.plant.PlantInfo">
         SELECT * FROM plant WHERE plant_id = #{plant_id}
     </select>
@@ -21,7 +23,7 @@
 
     <select id="countPlant" resultType="com.lpms.pojo.plant.Plant_number">
         SELECT *
-        FROM plant_number
+        FROM plant_number_v
     </select>
 
 
@@ -29,9 +31,5 @@
         INSERT INTO plant (plant_name, species_id, place_id, growth_id)
         VALUES (#{plant_name}, #{species_id}, #{place_id}, #{growth_id})
     </insert>
-
-
-
-
 
 </mapper>

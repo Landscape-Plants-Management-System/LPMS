@@ -18,5 +18,7 @@ public class DaoImpl {
         roleDAO = sqlSession.getMapper(RoleDAO.class);
         deviceDAO = sqlSession.getMapper(DeviceDAO.class);
         monitoringRecordDAO = sqlSession.getMapper(MonitoringRecordDAO.class);
+        plantDao=sqlSession.getMapper(PlantDao.class);
+        classificationDao=sqlSession.getMapper(ClassificationDao.class);
     }
 }

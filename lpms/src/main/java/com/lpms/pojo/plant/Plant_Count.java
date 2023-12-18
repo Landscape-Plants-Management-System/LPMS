@@ -1,15 +1,15 @@
 package com.lpms.pojo.plant;
 
 public class Plant_Count {
-    private String species_name;
+    private String speciesName;
     private  int number;
 
-    public String getSpecies_name() {
-        return species_name;
+    public String getSpeciesName() {
+        return speciesName;
     }
 
-    public void setSpecies_name(String species_name) {
-        this.species_name = species_name;
+    public void setSpeciesName(String speciesName) {
+        this.speciesName = speciesName;
     }
 
     public int getNumber() {
@@ -18,5 +18,13 @@ public class Plant_Count {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "Plant_Count{" +
+                "speciesName='" + speciesName + '\'' +
+                ", number=" + number +
+                '}';
     }
 }

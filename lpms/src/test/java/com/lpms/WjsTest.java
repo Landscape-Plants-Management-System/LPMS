@@ -2,10 +2,13 @@ package com.lpms;
 
 import com.lpms.dao.*;
 import com.lpms.pojo.monitor.MonitoringStatistics;
+import com.lpms.pojo.plant.PlantInfo;
 import com.lpms.utils.SqlSessionUtils;
 import com.lpms.utils.StringToDate;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
+
+import java.util.List;
 
 public class WjsTest {
     @Test
@@ -16,6 +19,21 @@ public class WjsTest {
         System.out.println(testDAO.queryAllTest());
         System.out.println("helloworld");
     }
+/**
+ * 植物测试代码
+ */
+  @Test
+  public void plantTest()
+  {
+      System.out.println("植物基本数据测试");
+      SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+      PlantDao p=sqlSession.getMapper(PlantDao.class);
+      List<PlantInfo> l=p.selectAllPlant();
+      for (int i=0;i<l.size();i++)
+      {
+         System.out.println(l.get(i).toString());
+      }
+  }
 
     /**
      * 设备表测试代码

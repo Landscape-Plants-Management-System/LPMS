@@ -32,7 +32,7 @@ public interface PlantDao {
      * 插入
      */
     //增添新植物
-    int insterPlant(String plant_name,int species_id,int place_id );
+    int insertPlant(String plant_name,int species_id,int place_id );
 
 
 
@@ -42,7 +42,7 @@ public interface PlantDao {
      */
 
     //修改植物生长周期
-    int upadatePlantgrowth(int plant_id, int growth_id );
+    int updatePlantgrowth(int plant_id, int growth_id );
 
 
 

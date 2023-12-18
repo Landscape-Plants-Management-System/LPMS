@@ -12,7 +12,7 @@
 
     <!-- 插入disease信息，并返回自增的disease_id -->
     <insert id="addDisease" parameterType="com.lpms.pojo.disease.Disease" useGeneratedKeys="true" keyProperty="disease_id">
-        INSERT INTO disease (disease_name, disease_methodid)
+        INSERT INTO disease (disease_name, method_id)
         VALUES (#{disease_name}, #{method_id})
     </insert>
 

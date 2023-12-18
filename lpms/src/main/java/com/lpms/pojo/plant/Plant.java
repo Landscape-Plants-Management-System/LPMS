@@ -1,52 +1,63 @@
 package com.lpms.pojo.plant;
 
 public class Plant {
-    int plant_id;//植物编号
-    String plant_name;//植物名称
+    int plantId;//植物编号
+    String plantName;//植物名称
 
-    int species_id;//种id
+    int speciesId;//种id
 
-    int place_id;//地点id
+    int placeId;//地点id
 
-    int growth_id;//生长周期id
+    int growthId;//生长周期id
 
-    public int getGrowth_id() {
-        return growth_id;
+    public int getPlantId() {
+        return plantId;
     }
 
-    public void setGrowth_id(int growth_id) {
-        this.growth_id = growth_id;
+    public void setPlantId(int plantId) {
+        this.plantId = plantId;
     }
 
-    public int getPlant_id() {
-        return plant_id;
+    public String getPlantName() {
+        return plantName;
     }
 
-    public void setPlant_id(int plant_id) {
-        this.plant_id = plant_id;
+    public void setPlantName(String plantName) {
+        this.plantName = plantName;
     }
 
-    public String getPlant_name() {
-        return plant_name;
+    public int getSpeciesId() {
+        return speciesId;
     }
 
-    public void setPlant_name(String plant_name) {
-        this.plant_name = plant_name;
+    public void setSpeciesId(int speciesId) {
+        this.speciesId = speciesId;
     }
 
-    public int getSpecies_id() {
-        return species_id;
+    public int getPlaceId() {
+        return placeId;
     }
 
-    public void setSpecies_id(int species_id) {
-        this.species_id = species_id;
+    public void setPlaceId(int placeId) {
+        this.placeId = placeId;
     }
 
-    public int getPlace_id() {
-        return place_id;
+    public int getGrowthId() {
+        return growthId;
     }
 
-    public void setPlace_id(int place_id) {
-        this.place_id = place_id;
+    public void setGrowthId(int growthId) {
+        this.growthId = growthId;
+    }
+
+    @Override
+    public String toString() {
+        return "Plant{" +
+                "plantId=" + plantId +
+                ", plantName='" + plantName + '\'' +
+                ", speciesId=" + speciesId +
+                ", placeId=" + placeId +
+                ", growthId=" + growthId +
+                '}';
     }
 }
