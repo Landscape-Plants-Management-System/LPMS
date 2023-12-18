@@ -4,11 +4,10 @@ public class PlantInfo {
 
     int plant_id;//植物id
     String plant_name;//植物标识名
-    String nickname;//植物别名
+
     String family_name;//科
     String genus_name;//属
     String species_name;//种
-
     String species_feature;//植物特征
 
     String species_cultivating;//培养技术
@@ -33,14 +32,6 @@ public class PlantInfo {
 
     public void setPlant_name(String plant_name) {
         this.plant_name = plant_name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getFamily_name() {
@@ -98,6 +89,18 @@ public class PlantInfo {
     public void setSpecies_value(String species_value) {
         this.species_value = species_value;
     }
-
+    public String toString() {
+        return "PlantInfo{" +
+                "plant_id=" + plant_id +
+                ", plant_name='" + plant_name + '\'' +
+                ", family_name='" + family_name + '\'' +
+                ", genus_name='" + genus_name + '\'' +
+                ", species_name='" + species_name + '\'' +
+                ", species_feature='" + species_feature + '\'' +
+                ", species_cultivating='" + species_cultivating + '\'' +
+                ", growth_name='" + growth_name + '\'' +
+                ", species_value='" + species_value + '\'' +
+                '}';
+    }
 
 }
