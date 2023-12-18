@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.Classification;
 
 public class Genus {
     private Long genus_id; //属ID，主键

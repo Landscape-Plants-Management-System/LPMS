@@ -1,4 +1,4 @@
-package com.lpms.pojo.plant;
+package com.lpms.pojo.Classification;
 
 public class Growth {
     private Long growth_id;//生长周期ID，自增主键

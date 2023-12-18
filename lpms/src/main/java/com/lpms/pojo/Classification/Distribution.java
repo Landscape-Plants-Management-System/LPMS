@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.Classification;
 
 public class Distribution {
     private Long distribution_id; //分布区域ID，主键

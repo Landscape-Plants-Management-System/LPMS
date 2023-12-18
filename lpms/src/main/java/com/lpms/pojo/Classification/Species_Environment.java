@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.Classification;
 
 public class Species_Environment {
     private Long species_environment_id;

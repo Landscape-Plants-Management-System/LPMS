@@ -3,61 +3,74 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lpms.dao.ClassificationDao">
-    <select id="listFamilies" resultType="com.lpms.pojo.Family">
+    <!-- 查询 -->
+    <!-- 科 -->
+    <select id="listFamilies" resultType="com.lpms.pojo.Classification.Family">
         select * from family;
     </select>
-    <select id="getFamilyByFamilyId" resultType="com.lpms.pojo.Family">
+    <select id="getFamilyByFamilyId" resultType="com.lpms.pojo.Classification.Family">
         select * from family where family_id=#{family_id};
     </select>
-    <select id="getFamilyByFamilyName" resultType="com.lpms.pojo.Family">
+    <select id="getFamilyByFamilyName" resultType="com.lpms.pojo.Classification.Family">
         select * from family where family_name=#{family_name};
     </select>
-    <select id="listGenuses" resultType="com.lpms.pojo.Genus">
+
+    <!-- 属 -->
+    <select id="listGenuses" resultType="com.lpms.pojo.Classification.Genus">
         select * from genus;
     </select>
-    <select id="getGenusByGenusId" resultType="com.lpms.pojo.Genus">
+    <select id="getGenusByGenusId" resultType="com.lpms.pojo.Classification.Genus">
         select * from genus where genus_id=#{genus_id};
     </select>
-    <select id="getGenusByGenusName" resultType="com.lpms.pojo.Genus">
+    <select id="getGenusByGenusName" resultType="com.lpms.pojo.Classification.Genus">
         select * from genus where genus_name=#{genus_name};
     </select>
-    <select id="listSpecies" resultType="com.lpms.pojo.Species">
+
+    <!-- 种 -->
+    <select id="listSpecies" resultType="com.lpms.pojo.Classification.Species">
         select * from species;
     </select>
-    <select id="getSpeciesBySpeciesId" resultType="com.lpms.pojo.Species">
+    <select id="getSpeciesBySpeciesId" resultType="com.lpms.pojo.Classification.Species">
         select * from species where species_id=#{species_id};
     </select>
-    <select id="getSpeciesBySpeciesName" resultType="com.lpms.pojo.Species">
+    <select id="getSpeciesBySpeciesName" resultType="com.lpms.pojo.Classification.Species">
         select * from species where species_name=#{species_name};
     </select>
-    <select id="listDistributions" resultType="com.lpms.pojo.Distribution">
+
+    <!-- 分布区域 -->
+    <select id="listDistributions" resultType="com.lpms.pojo.Classification.Distribution">
         select * from distribution;
     </select>
-    <select id="getFamilyByDistributionId" resultType="com.lpms.pojo.Distribution">
+    <select id="getFamilyByDistributionId" resultType="com.lpms.pojo.Classification.Distribution">
         select * from distribution where distribution_id=#{distribution_id};
     </select>
-    <select id="getFamilyByDistributionName" resultType="com.lpms.pojo.Distribution">
-        select * from distribution where distribution_name=#{distribution_name};
+    <select id="getFamilyByDistributionName" resultType="com.lpms.pojo.Classification.Distribution">
+        select * from distribution where distribution_provincial like CONCAT('%', #{distribution_provincial}, '%');
     </select>
-    <select id="listEnvironment" resultType="com.lpms.pojo.Environment">
+
+    <!-- 生长环境 -->
+    <select id="listEnvironment" resultType="com.lpms.pojo.Classification.Environment">
         select * from environment;
     </select>
-    <select id="getEnvironmentByEnvironmentId" resultType="com.lpms.pojo.Environment">
+    <select id="getEnvironmentByEnvironmentId" resultType="com.lpms.pojo.Classification.Environment">
         select * from environment where environment_id=#{environment_id};
     </select>
-    <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Environment">
+    <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Classification.Environment">
         select * from environment where environment_name=#{environment_name};
     </select>
-    <select id="listGrowth" resultType="com.lpms.pojo.plant.Growth">
+
+    <!-- 生长周期 -->
+    <select id="listGrowth" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth;
     </select>
-    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Genus">
+    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth where growth_id=#{growth_id};
     </select>
-    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.Genus">
+    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth where growth_name=#{growth_name};
     </select>
 
+    <!-- 插入 -->
     <insert id="insertFamily">
         insert into family (family_id, family_name)
         values (null, #{family_name})
@@ -71,8 +84,8 @@
         values (null, #{species_name}, #{genus_id})
     </insert>
     <insert id="insertDistribution">
-        insert into distribution (distribution_id, distribution_name, family_id)
-        values (null, #{distribution_name}, #{family_id})
+        insert into distribution (distribution_id, distribution_provincial)
+        values (null, #{distribution_provincial})
     </insert>
     <insert id="insertEnvironment">
         insert into environment (environment_id, environment_name)
@@ -83,42 +96,48 @@
         values (null, #{growth_name})
     </insert>
 
+    <!-- 删除 -->
     <delete id="deleteFamilyById">
         delete from family where family_id=#{family_id}
     </delete>
     <delete id="deleteFamilyByName">
         delete from family where family_name=#{family_name}
     </delete>
+
     <delete id="deleteGenusById">
         delete from genus where genus_id=#{genus_id}
     </delete>
     <delete id="deleteGenusByName">
         delete from genus where genus_name=#{genus_name}
     </delete>
+
     <delete id="deleteSpeciesById">
         delete from species where species_id=#{species_id}
     </delete>
     <delete id="deleteSpeciesByName">
         delete from species where species_name=#{species_name}
     </delete>
+
     <delete id="deleteDistributionById">
         delete from distribution where distribution_id=#{distribution_id}
     </delete>
     <delete id="deleteDistributionByProvincial">
         delete from distribution where distribution_provincial=#{distribution_provincial}
     </delete>
-    <delete id="deleteDistributionByCity">
-        delete from distribution where distribution_city=#{distribution_city}
-    </delete>
-    <delete id="deleteDistributionByCounty">
-        delete from distribution where distribution_county=#{distribution_county}
-    </delete>
+<!--    <delete id="deleteDistributionByCity">-->
+<!--        delete from distribution where distribution_city=#{distribution_city}-->
+<!--    </delete>-->
+<!--    <delete id="deleteDistributionByCounty">-->
+<!--        delete from distribution where distribution_county=#{distribution_county}-->
+<!--    </delete>-->
+
     <delete id="deleteEnvironmentById">
         delete from environment where environment_id=#{environment_id}
     </delete>
     <delete id="deleteEnvironmentByName">
         delete from environment where environment_name=#{environment_name}
     </delete>
+
     <delete id="deleteGrowthById">
         delete from growth where growth_id=#{growth_id}
     </delete>
@@ -126,6 +145,7 @@
         delete from growth where growth_name=#{growth_name}
     </delete>
 
+    <!-- 更新 -->
     <update id="updateFamilyNameById">
         update family set family_name=#{family_name} where family_id=#{family_id}
     </update>
@@ -152,34 +172,33 @@
         where distribution_id = #{distribution_id}
     </update>
     <update id="updateEnvironmentNameById">
-        update environment set environment_name=#{environment_name} where environment_id=#{environment_id}
+        update environment set environment_name=#{environment_name} where environment
+        _id=#{environment_id}
     </update>
     <update id="updateGrowthById">
         update growth set growth_name=#{growth_name} where growth_id=#{growth_id}
     </update>
 
     <!-- 查看简易的植物分类信息，也可用于生长环境的模糊查询 -->
-    <select id="getSimpleClassificationInfo" resultType="com.lpms.pojo.Simple_Classification_Info">
-        SELECT family_name,genus_name,species_name,distribution_provincial,distribution_city, environment
-        FROM classification_info_view
+    <select id="getSimpleClassificationInfo" resultType="com.lpms.pojo.Classification.Simple_Classification_Info">
+        SELECT family_name,genus_name,species_name,environment_name
+        FROM simple_classification_info_v
         WHERE family_name LIKE CONCAT('%', #{keyword}, '%')
         OR genus_name LIKE CONCAT('%', #{keyword}, '%')
         OR species_name LIKE CONCAT('%', #{keyword}, '%')
-        OR distribution_provincial LIKE CONCAT('%', #{keyword}, '%')
-        OR distribution_city LIKE CONCAT('%', #{keyword}, '%')
-        OR environment LIKE CONCAT('%', #{keyword}, '%')
-        ORDER BY family_name,genus_name,species_name,distribution_provincial,distribution_city, environment;
+        OR environment_name LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY family_name,genus_name,species_name,environment_name;
     </select>
 
     <!-- 查看完整的植物分类信息 -->
-    <select id="getCompleteClassificationInfo" resultType="com.lpms.pojo.Complete_Classification_Info">
-        SELECT * FROM classification_info_view;
+    <select id="getCompleteClassificationInfo" resultType="com.lpms.pojo.Classification.Complete_Classification_Info">
+        SELECT * FROM all_classification_info_v;
     </select>
 
     <!-- 根据指定属性查找下属的植物情况 -->
-    <select id="findSubordinatePlants" resultType="com.lpms.pojo.Family_Genus_Species_Info">
+    <select id="findSubordinatePlants" resultType="com.lpms.pojo.Classification.Family_Genus_Species_Info">
         SELECT family_name, genus_name, species_name
-        FROM Family_Genus_Species_Info
+        FROM family_genus_species_info_v
         WHERE (family_name = #{keyword} OR family_id = #{keyword} OR genus_name = #{keyword} OR genus_id = #{keyword}
         OR species_name = #{keyword} OR species_id = #{keyword})
         AND (species_id IS NULL OR species_id = '')

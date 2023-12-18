@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.Classification;
 
 public class Environment {
     private Long environment_id;//生长环境ID，自增主键

@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.Classification;
 
 public class Family_Genus_Species_Info {
     private Long family_id; //科ID
