@@ -35,6 +35,7 @@
         <mapper resource="com/lpms/dao/UserDAO.xml"/>
         <mapper resource="com/lpms/dao/PlantDAO.xml"/>
         <mapper resource="com/lpms/dao/MonitoringRecordDAO.xml"/>
+        <mapper resource="com/lpms/dao/ClassificationDAO.xml"/>
     </mappers>
 
 
