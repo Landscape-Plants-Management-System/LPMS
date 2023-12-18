@@ -4,8 +4,9 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lpms.dao.UserDAO">
 
-    <select id=" selectUserByName" parameterType="String" resultType="com.lpms.pojo.User">
-        SELECT * FROM user WHERE user_name=#{user_name}
+<!--    User getUserByName(@Param("userName") String userName);-->
+    <select id="getUserByName" resultType="com.lpms.pojo.User">
+        SELECT * FROM user WHERE user_name=#{userName}
     </select>
 
 </mapper>

@@ -3,27 +3,19 @@ package com.lpms.pojo;
 public class User {
     private Integer userId;
     private String userName;
+    private String userPassword;
     private String userPhoneNum;
     private Integer userAge;
     private String userSex;
     private Role role;//一对多
 
-    private String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public User() {
     }
 
-    public User(Integer userId, String userName, String userPhoneNum, Integer userAge, String userSex, Role role) {
+    public User(Integer userId, String userName, String userPassword, String userPhoneNum, Integer userAge, String userSex, Role role) {
         this.userId = userId;
         this.userName = userName;
+        this.userPassword = userPassword;
         this.userPhoneNum = userPhoneNum;
         this.userAge = userAge;
         this.userSex = userSex;
@@ -35,6 +27,7 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
                 ", userPhoneNum='" + userPhoneNum + '\'' +
                 ", userAge=" + userAge +
                 ", userSex='" + userSex + '\'' +
@@ -56,6 +49,14 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public String getUserPhoneNum() {

@@ -11,7 +11,7 @@ public interface UserDAO {
      * 查询
      */
     //根据用户名查询用户
-    public User selectUserByName(String name);
+    User getUserByName(@Param("userName") String userName);
 
 
     /**
