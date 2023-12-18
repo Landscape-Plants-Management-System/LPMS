@@ -2,36 +2,36 @@ package com.lpms.pojo;
 
 public class User {
     private Integer userId;
+    private Integer roleId;
     private String userName;
     private String userPassword;
     private String userPhoneNum;
     private Integer userAge;
     private String userSex;
-    private Role role;//一对多
 
     public User() {
     }
 
-    public User(Integer userId, String userName, String userPassword, String userPhoneNum, Integer userAge, String userSex, Role role) {
+    public User(Integer userId, Integer roleId, String userName, String userPassword, String userPhoneNum, Integer userAge, String userSex) {
         this.userId = userId;
+        this.roleId = roleId;
         this.userName = userName;
         this.userPassword = userPassword;
         this.userPhoneNum = userPhoneNum;
         this.userAge = userAge;
         this.userSex = userSex;
-        this.role = role;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
+                ", roleId=" + roleId +
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userPhoneNum='" + userPhoneNum + '\'' +
                 ", userAge=" + userAge +
                 ", userSex='" + userSex + '\'' +
-                ", role=" + role +
                 '}';
     }
 
@@ -41,6 +41,14 @@ public class User {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getUserName() {
@@ -81,13 +89,5 @@ public class User {
 
     public void setUserSex(String userSex) {
         this.userSex = userSex;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 }
