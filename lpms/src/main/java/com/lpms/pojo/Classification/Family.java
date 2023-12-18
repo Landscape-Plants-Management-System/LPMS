@@ -1,38 +1,38 @@
 package com.lpms.pojo.Classification;
 
 public class Family {
-    private Long family_id; //科ID，主键
-    private String family_name; //科名
+    private int familyId; //科ID，主键
+    private String familyName; //科名
 
     public Family() {
     }
 
-    public Family(Long family_id, String family_name) {
-        this.family_id = family_id;
-        this.family_name = family_name;
-    }
-
-    public Long getFamily_id() {
-        return family_id;
-    }
-
-    public void setFamily_id(Long family_id) {
-        this.family_id = family_id;
-    }
-
-    public String getFamily_name() {
-        return family_name;
-    }
-
-    public void setFamily_name(String family_name) {
-        this.family_name = family_name;
+    public Family(int familyId, String familyName) {
+        this.familyId = familyId;
+        this.familyName = familyName;
     }
 
     @Override
     public String toString() {
         return "Family{" +
-                "family_id=" + family_id +
-                ", family_name='" + family_name + '\'' +
+                "familyId=" + familyId +
+                ", familyName='" + familyName + '\'' +
                 '}';
+    }
+
+    public int getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(int familyId) {
+        this.familyId = familyId;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
     }
 }

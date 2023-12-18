@@ -56,17 +56,17 @@
         select * from environment where environment_id=#{environment_id};
     </select>
     <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Classification.Environment">
-        select * from environment where environment_name=#{environment_name};
+        select * from environment where environment_name like concat('%', #{environment_name}, '%');
     </select>
 
     <!-- 生长周期 -->
     <select id="listGrowth" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth;
     </select>
-    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Classification.Genus">
+    <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth where growth_id=#{growth_id};
     </select>
-    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.Classification.Genus">
+    <select id="getGrowthByGrowthName" resultType="com.lpms.pojo.Classification.Growth">
         select * from growth where growth_name=#{growth_name};
     </select>
 

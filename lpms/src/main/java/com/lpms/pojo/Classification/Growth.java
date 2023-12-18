@@ -1,38 +1,38 @@
 package com.lpms.pojo.Classification;
 
 public class Growth {
-    private Long growth_id;//生长周期ID，自增主键
-    private String growth_name;//生长周期名称
+    private Long growthId;//生长周期ID，自增主键
+    private String growthName;//生长周期名称
 
     public Growth() {
     }
 
-    public Growth(Long growth_id, String growth_name) {
-        this.growth_id = growth_id;
-        this.growth_name = growth_name;
-    }
-
-    public Long getGrowth_id() {
-        return growth_id;
-    }
-
-    public void setGrowth_id(Long growth_id) {
-        this.growth_id = growth_id;
-    }
-
-    public String getGrowth_name() {
-        return growth_name;
-    }
-
-    public void setGrowth_name(String growth_name) {
-        this.growth_name = growth_name;
+    public Growth(Long growthId, String growthName) {
+        this.growthId = growthId;
+        this.growthName = growthName;
     }
 
     @Override
     public String toString() {
         return "Growth{" +
-                "growth_id=" + growth_id +
-                ", growth_name='" + growth_name + '\'' +
+                "growthId=" + growthId +
+                ", growthName='" + growthName + '\'' +
                 '}';
+    }
+
+    public Long getGrowthId() {
+        return growthId;
+    }
+
+    public void setGrowthId(Long growthId) {
+        this.growthId = growthId;
+    }
+
+    public String getGrowthName() {
+        return growthName;
+    }
+
+    public void setGrowthName(String growthName) {
+        this.growthName = growthName;
     }
 }

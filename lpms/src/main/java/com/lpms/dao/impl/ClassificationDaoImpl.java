@@ -56,7 +56,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
     }
 
     @Override
-    public Environment getEnvironmentByEnvironmentName(String environment_name) {
+    public List<Environment> getEnvironmentByEnvironmentName(String environment_name) {
         return classificationDao.getEnvironmentByEnvironmentName(environment_name);
     }
 
@@ -72,7 +72,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
 
     @Override
     public void insertFamily(Family family) {
-        if(getFamilyByFamilyName(family.getFamily_name())!=null){
+        if(getFamilyByFamilyName(family.getFamilyName())!=null){
             throw new RuntimeException("该分类已存在");
         }
         classificationDao.insertFamily(family);
@@ -80,6 +80,9 @@ public class ClassificationDaoImpl implements ClassificationDao {
 
     @Override
     public void insertGenus(Genus genus) {
+        if(getGenusByGenusName(genus.getGenusName())!=null){
+            throw new RuntimeException("该属已存在");
+        }
         classificationDao.insertGenus(genus);
     }
 
@@ -90,7 +93,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
 
     @Override
     public void insertDistribution(Distribution distribution) {
-        if(getFamilyByDistributionName(distribution.getDistribution_provincial())!=null){
+        if(getFamilyByDistributionName(distribution.getDistributionProvincial())!=null){
             throw new RuntimeException("该分布区域已存在");
         }
         classificationDao.insertDistribution(distribution);
@@ -98,7 +101,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
 
     @Override
     public void insertEnvironment(Environment environment) {
-        if(getEnvironmentByEnvironmentName(environment.getEnvironment_name())!=null){
+        if(getEnvironmentByEnvironmentName(environment.getEnvironmentName())!=null){
             throw new RuntimeException("该生长环境已存在");
         }
         classificationDao.insertEnvironment(environment);
@@ -106,7 +109,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
 
     @Override
     public void insertGrowth(Growth growth) {
-        if(getGrowthByGrowthName(growth.getGrowth_name())!=null){
+        if(getGrowthByGrowthName(growth.getGrowthName())!=null){
             throw new RuntimeException("该生长阶段已存在");
         }
         classificationDao.insertGrowth(growth);

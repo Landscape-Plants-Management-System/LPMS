@@ -56,7 +56,7 @@
         select * from environment where environment_id=#{environment_id};
     </select>
     <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Classification.Environment">
-        select * from environment where environment_name=#{environment_name};
+        select * from environment where environment_name like concat('%', #{environment_name}, '%');
     </select>
 
     <!-- 生长周期 -->

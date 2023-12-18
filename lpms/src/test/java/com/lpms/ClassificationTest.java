@@ -91,7 +91,7 @@ public class ClassificationTest {
         //System.out.println(classificationDao.getFamilyByDistributionId(1));
 
         //测试根据分布区域名查询分布区域
-        System.out.println(classificationDao.getFamilyByDistributionName("华北"));
+        System.out.println(classificationDao.getFamilyByDistributionName("上海"));
 
     }
 
@@ -109,7 +109,7 @@ public class ClassificationTest {
         //测试根据生长环境ID查询生长环境
         //System.out.println(classificationDao.getEnvironmentByEnvironmentId(1));
 
-        //测试根据生长环境名查询生长环境
+        //测试根据生长环境名查询生长环境，支持模糊查询
         System.out.println(classificationDao.getEnvironmentByEnvironmentName("温带"));
 
     }

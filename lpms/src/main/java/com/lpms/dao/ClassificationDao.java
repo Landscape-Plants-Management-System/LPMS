@@ -33,7 +33,7 @@ public interface ClassificationDao {
     //生长环境
     List<Environment> listEnvironment();
     //Environment getEnvironmentByEnvironmentId(@Param("environment_id")Integer environment_id);
-    Environment getEnvironmentByEnvironmentName(@Param("environment_name")String environment_name);
+    List<Environment> getEnvironmentByEnvironmentName(@Param("environment_name")String environment_name);
 
     //生长阶段
     List<Growth> listGrowth();

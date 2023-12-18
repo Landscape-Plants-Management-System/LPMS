@@ -1,38 +1,38 @@
 package com.lpms.pojo.Classification;
 
 public class Environment {
-    private Long environment_id;//生长环境ID，自增主键
-    private String environment_name;//生长环境名称
+    private Long environmentId;//生长环境ID，自增主键
+    private String environmentName;//生长环境名称
 
     public Environment() {
     }
 
-    public Environment(Long environment_id, String environment_name) {
-        this.environment_id = environment_id;
-        this.environment_name = environment_name;
-    }
-
-    public Long getEnvironment_id() {
-        return environment_id;
-    }
-
-    public void setEnvironment_id(Long environment_id) {
-        this.environment_id = environment_id;
-    }
-
-    public String getEnvironment_name() {
-        return environment_name;
-    }
-
-    public void setEnvironment_name(String environment_name) {
-        this.environment_name = environment_name;
+    public Environment(Long environmentId, String environmentName) {
+        this.environmentId = environmentId;
+        this.environmentName = environmentName;
     }
 
     @Override
     public String toString() {
-        return "environment{" +
-                "environment_id=" + environment_id +
-                ", environment_name='" + environment_name + '\'' +
+        return "Environment{" +
+                "environmentId=" + environmentId +
+                ", environmentName='" + environmentName + '\'' +
                 '}';
+    }
+
+    public Long getEnvironmentId() {
+        return environmentId;
+    }
+
+    public void setEnvironmentId(Long environmentId) {
+        this.environmentId = environmentId;
+    }
+
+    public String getEnvironmentName() {
+        return environmentName;
+    }
+
+    public void setEnvironmentName(String environmentName) {
+        this.environmentName = environmentName;
     }
 }
