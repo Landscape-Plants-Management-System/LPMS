@@ -1,14 +1,14 @@
 package com.lpms.pojo;
 
-public class species_environment {
+public class Species_Environment {
     private Long species_environment_id;
     private Long species_id;
     private Long environment_id;
 
-    public species_environment() {
+    public Species_Environment() {
     }
 
-    public species_environment(Long species_environment_id, Long species_id, Long environment_id) {
+    public Species_Environment(Long species_environment_id, Long species_id, Long environment_id) {
         this.species_environment_id = species_environment_id;
         this.species_id = species_id;
         this.environment_id = environment_id;
