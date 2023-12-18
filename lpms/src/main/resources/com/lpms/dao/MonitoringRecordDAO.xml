@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lpms.dao.MonitoringRecordDAO">
+<!--    查询视图的内容-->
+
+<!--    List<MonitoringRecordShow>listMonitoringRecord();-->
+    <select id="listMonitoringRecord" resultType="com.lpms.pojo.monitor.MonitoringRecordShow">
+        select * from mon_plant_user_device_v
+    </select>
+
+<!--    List<MonitoringPlantAndPlaceShow>listMonitoringPlantAndPlaceShow();-->
+    <select id="listMonitoringPlantAndPlaceShow" resultType="com.lpms.pojo.monitor.MonitoringPlantAndPlaceShow">
+        select * from mon_plant_place_v
+    </select>
+
+<!--    List<MonitoringPlantDetailInfo>listMonitoringPlantDetailInfo();-->
+    <select id="listMonitoringPlantDetailInfo"  resultType="com.lpms.pojo.monitor.MonitoringPlantDetailInfo">
+        select *from mon_plant_species_genus_family_v;
+    </select>
+
+<!--    MonitoringStatistics getMonitoringStatistics();-->
+    <select id="getMonitoringStatistics" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM monitoring_record;
+    </select>
+
+<!--    MonitoringStatistics getMonitoringStatisticsByPlantId();-->
+    <select id="getMonitoringStatisticsByPlantId" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM mon_plant_species_genus_family_v where plant_id=#{plantId}
+    </select>
+
+<!--    MonitoringStatistics getMonitoringStatisticsByGenusName(@Param("genusName")String genusName);-->
+    <select id="getMonitoringStatisticsByGenusName" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM mon_plant_species_genus_family_v where genus_name=#{genusName}
+    </select>
+
+<!--    MonitoringStatistics getMonitoringStatisticsByFamilyName(@Param("familyName")String familyName);-->
+    <select id="getMonitoringStatisticsByFamilyName" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM mon_plant_species_genus_family_v where family_name=#{familyName}
+    </select>
+
+<!--    List<MonitoringRecord> getMonitoringStatisticsByDateRange(@Param("startDate") Date startDate, @Param("endDate") Date endDate);-->
+    <select id="getMonitoringStatisticsByDateRange" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM mon_plant_species_genus_family_v where mon_date BETWEEN #{startDate} AND #{endDate};
+    </select>
+
+    <!-- 插入监测记录 -->
+    <insert id="insertMonitoringRecord" parameterType="com.lpms.pojo.monitor.MonitoringRecord">
+        INSERT INTO monitoring_record
+        (mon_date, mon_plant_id, user_id, dev_id, mon_stem_growth, mon_fruit_growth, mon_canopy_temperature, mon_leaf_temperature)
+        VALUES
+            (#{monDate}, #{monPlantId}, #{userId}, #{devId}, #{monStemGrowth}, #{monFruitGrowth}, #{monCanopyTemperature}, #{monLeafTemperature})
+    </insert>
+
+    <!-- 删除监测记录 -->
+    <delete id="deleteMonitoringRecordById" parameterType="int">
+        DELETE FROM monitoring_record WHERE mon_id = #{monId}
+    </delete>
+
+    <!-- 更新监测记录 -->
+    <update id="updateMonitoringRecord" parameterType="com.lpms.pojo.monitor.MonitoringRecord">
+        UPDATE monitoring_record
+        SET mon_date = #{monDate}, mon_plant_id = #{monPlantId}, user_id = #{userId},
+            dev_id = #{devId}, mon_stem_growth = #{monStemGrowth}, mon_fruit_growth = #{monFruitGrowth},
+            mon_canopy_temperature = #{monCanopyTemperature}, mon_leaf_temperature = #{monLeafTemperature}
+        WHERE mon_id = #{monId}
+    </update>
+</mapper>

@@ -1,7 +1,6 @@
 package com.lpms.dao;
 
-import com.lpms.pojo.Device;
-import com.lpms.pojo.Test;
+import com.lpms.pojo.monitor.Device;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

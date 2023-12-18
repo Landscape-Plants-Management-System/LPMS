@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.monitor;
 
 public class Device {
     private Long devId; // 设备ID，主键

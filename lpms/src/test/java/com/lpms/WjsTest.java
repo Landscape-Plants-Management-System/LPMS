@@ -1,11 +1,9 @@
 package com.lpms;
 
-import com.lpms.dao.DeviceDAO;
-import com.lpms.dao.RoleDAO;
-import com.lpms.dao.TestDAO;
-import com.lpms.dao.UserDAO;
-import com.lpms.pojo.Device;
+import com.lpms.dao.*;
+import com.lpms.pojo.monitor.MonitoringStatistics;
 import com.lpms.utils.SqlSessionUtils;
+import com.lpms.utils.StringToDate;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -70,6 +68,38 @@ public class WjsTest {
         UserDAO userDAO =sqlSession.getMapper(UserDAO.class);
         //查询测试
 
+    }
+
+    /**
+     * 监测记录测试代码
+     */
+    @Test
+    public void monRecTest(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        MonitoringRecordDAO monitoringRecordDAO =sqlSession.getMapper(MonitoringRecordDAO.class);
+//        //查询普通记录测试
+//        System.out.println(monitoringRecordDAO.listMonitoringRecord());
+//        //查询植物详细地点测试
+//        System.out.println(monitoringRecordDAO.listMonitoringPlantAndPlaceShow());
+//        //查询植物详细信息测试
+//        System.out.println(monitoringRecordDAO.listMonitoringPlantDetailInfo());
+
+
+        //查询所有植物的4个数据的平均值，最大值，最小值查询
+        System.out.println(monitoringRecordDAO.getMonitoringStatistics());
+        //查询某种植物的4个数据的平均值，最大值，最小值查询
+        System.out.println(monitoringRecordDAO.getMonitoringStatisticsByPlantId(1));
+
+        //查询某属植物的4个数据的平均值，最大值，最小值查询
+        System.out.println(monitoringRecordDAO.getMonitoringStatisticsByGenusName("补血草属"));
+
+        //查询某科植物的4个数据的平均值，最大值，最小值查询
+        System.out.println(monitoringRecordDAO.getMonitoringStatisticsByFamilyName("白花丹科"));
+
+        //查询某段时间植物的监测数据
+        System.out.println(monitoringRecordDAO.getMonitoringStatisticsByDateRange(StringToDate.getStringToDate("2023-12-18 14:00:00"),StringToDate.getStringToDate("2023-12-18 15:00:00")));
+
+        //增删改
 
     }
 }
