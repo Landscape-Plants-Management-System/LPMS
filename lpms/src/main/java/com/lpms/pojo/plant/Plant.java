@@ -1,4 +1,4 @@
-package com.lpms.pojo;
+package com.lpms.pojo.plant;
 
 public class Plant {
     int plant_id;//植物编号
@@ -8,7 +8,7 @@ public class Plant {
 
     int place_id;//地点id
 
-    int growth_id;//生长周期
+    int growth_id;//生长周期id
 
     public int getGrowth_id() {
         return growth_id;

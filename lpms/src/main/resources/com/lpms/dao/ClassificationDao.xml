@@ -48,7 +48,7 @@
     <select id="getEnvironmentByEnvironmentName" resultType="com.lpms.pojo.Environment">
         select * from environment where environment_name=#{environment_name};
     </select>
-    <select id="listGrowth" resultType="com.lpms.pojo.Growth">
+    <select id="listGrowth" resultType="com.lpms.pojo.plant.Growth">
         select * from growth;
     </select>
     <select id="getGrowthByGrowthId" resultType="com.lpms.pojo.Genus">

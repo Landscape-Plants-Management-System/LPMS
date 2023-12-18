@@ -1,12 +1,11 @@
-package com.lpms.pojo;
+package com.lpms.pojo.plant;
 
 public class PlantInfo {
 
     int plant_id;//植物id
-    String plant_name;//植物名称
+    String plant_name;//植物标识名
     String nickname;//植物别名
     String family_name;//科
-
     String genus_name;//属
     String species_name;//种
 
@@ -18,7 +17,6 @@ public class PlantInfo {
 
     String species_value;//应用价值
 
-    String environment_name;//生长环境
 
 
     public int getPlant_id() {
@@ -101,12 +99,5 @@ public class PlantInfo {
         this.species_value = species_value;
     }
 
-    public String getEnvironment_name() {
-        return environment_name;
-    }
-
-    public void setEnvironment_name(String environment_name) {
-        this.environment_name = environment_name;
-    }
 
 }

@@ -1,6 +1,7 @@
 package com.lpms.dao;
 
 import com.lpms.pojo.*;
+import com.lpms.pojo.plant.Growth;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
