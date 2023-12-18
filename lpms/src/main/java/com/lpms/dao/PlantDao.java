@@ -1,6 +1,7 @@
 package com.lpms.dao;
 
 import com.lpms.pojo.PlantInfo;
+import com.lpms.pojo.Plant_number;
 
 import java.util.List;
 
@@ -15,8 +16,14 @@ public interface PlantDao {
     //根据植物id进行查询
     PlantInfo selectPlantById(int plant_id);
 
-    //模糊查询
+    //模糊查询植物信息
     List<PlantInfo> elasticSearchPlant(String word);
+
+
+    //统计每种植物的数量
+    List<Plant_number> countPlant();
+
+
 
     /**
      * 插入
