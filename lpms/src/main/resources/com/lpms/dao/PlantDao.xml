@@ -4,15 +4,15 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lpms.dao.PlantDao">
 
-    <select id="selectPlantByName" parameterType="String" resultType="com.lpms.pojo.PlantInfo">
+    <select id="selectPlantByName" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
         SELECT * FROM plants WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
     </select>
 
-    <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.PlantInfo">
+    <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.plant.PlantInfo">
         SELECT * FROM plants WHERE plant_id = #{plant_id}
     </select>
 
-    <select id="elasticSearchPlant" parameterType="String" resultType="com.lpms.pojo.PlantInfo">
+    <select id="elasticSearchPlant" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
 
         SELECT * FROM plants WHERE plant_name LIKE CONCAT('%', #{word}, '%')
     </select>
@@ -23,7 +23,7 @@
     </select>
 
 
-    <insert id="insertPlant" parameterType="com.lpms.pojo.Plant" keyProperty="plant_id" useGeneratedKeys="true">
+    <insert id="insertPlant" parameterType="com.lpms.pojo.plant.Plant" keyProperty="plant_id" useGeneratedKeys="true">
         INSERT INTO plants (plant_name, species_id, place_id, growth_id)
         VALUES (#{plant_name}, #{species_id}, #{place_id}, #{growth_id})
     </insert>

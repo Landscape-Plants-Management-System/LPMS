@@ -1,6 +1,6 @@
 package com.lpms.dao;
 
-import com.lpms.pojo.PlantInfo;
+import com.lpms.pojo.plant.PlantInfo;
 import com.lpms.pojo.Plant_number;
 
 import java.util.List;
