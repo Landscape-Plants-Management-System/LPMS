@@ -5,16 +5,16 @@
 <mapper namespace="com.lpms.dao.PlantDao">
 
     <select id="selectPlantByName" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
-        SELECT * FROM plants WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
+        SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
     </select>
 
     <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.plant.PlantInfo">
-        SELECT * FROM plants WHERE plant_id = #{plant_id}
+        SELECT * FROM plant WHERE plant_id = #{plant_id}
     </select>
 
     <select id="elasticSearchPlant" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
 
-        SELECT * FROM plants WHERE plant_name LIKE CONCAT('%', #{word}, '%')
+        SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{word}, '%')
     </select>
 
     <select id="countPlant" resultType="com.lpms.pojo.Plant_number">
@@ -24,7 +24,7 @@
 
 
     <insert id="insertPlant" parameterType="com.lpms.pojo.plant.Plant" keyProperty="plant_id" useGeneratedKeys="true">
-        INSERT INTO plants (plant_name, species_id, place_id, growth_id)
+        INSERT INTO plant (plant_name, species_id, place_id, growth_id)
         VALUES (#{plant_name}, #{species_id}, #{place_id}, #{growth_id})
     </insert>
 
