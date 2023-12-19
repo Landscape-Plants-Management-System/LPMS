@@ -17,13 +17,19 @@ public class DeptInChargeController {
     public void indexIn(){
         initController();
         while(true){
-            System.out.println("请选择：1.园林植物基本信息查询 2.查看所有工作人员信息");
+            System.out.println("请选择：1.园林植物基本信息查询 2.查看所有工作人员信息 3.查询监测数据 4.查询养护记录");
             chooseFunction=scanner.nextInt();
             switch (chooseFunction){
                 case 1:
                     userSharingController.plantBasicQuery();
                     break;
                 case 2:
+                    queryAllWorker();
+                    break;
+                case 3:
+
+                    break;
+                case 4:
 
                     break;
                 default:
