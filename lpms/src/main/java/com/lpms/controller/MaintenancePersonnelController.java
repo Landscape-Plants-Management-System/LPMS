@@ -17,11 +17,17 @@ public class MaintenancePersonnelController {
     public void indexIn(){
         initController();
         while(true){
-            System.out.println("请选择：1.园林植物基本信息查询");
+            System.out.println("请选择：1.查询所有养护任务 2.根据执行人员查询养护任务 3.更新养护任务" );
             chooseFunction=scanner.nextInt();
             switch (chooseFunction){
                 case 1:
-                    userSharingController.plantBasicQuery();
+                    userSharingController.getAllConserveTask();
+                    break;
+                case 2:
+                    userSharingController.getConserveTaskByUsername();
+                    break;
+                case 3:
+                    userSharingController.UpdateConserveTask();
                     break;
                 default:
                     System.out.println("输入错误，请重新输入");

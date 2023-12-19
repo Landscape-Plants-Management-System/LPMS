@@ -3,6 +3,7 @@ package com.lpms.controller;
 import com.lpms.dao.ClassificationDao;
 import com.lpms.dao.impl.DaoImpl;
 import com.lpms.pojo.classification.*;
+import com.lpms.pojo.conserveTask.ConserveTask;
 import com.lpms.pojo.monitor.Device;
 import com.lpms.pojo.monitor.MonitoringPlantDetailInfo;
 import com.lpms.pojo.monitor.MonitoringRecordShow;
@@ -12,6 +13,7 @@ import com.lpms.pojo.plant.Plant_Count;
 import com.lpms.pojo.plant.Plant_number;
 import com.lpms.utils.StringToDate;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -267,6 +269,39 @@ public class UserSharingController {
                 System.out.println("输入错误");
                 break;
         }
+    }
+
+    public void getAllConserveTask() {
+        // 根据名字查询养护任务
+        List<ConserveTask> conserveTasks = DaoImpl.conserveTaskDao.getAllConserveTasks();
+        // 遍历列表并输出每个元素的内容
+        for (ConserveTask task : conserveTasks) {
+            System.out.println(task);
+        }
+    }
+
+
+    public void getConserveTaskByUsername(){
+        //根据名字查询种
+        System.out.println("请输入执行人员名称");
+        Scanner scanner=new Scanner(System.in);
+        String username=scanner.nextLine();
+        List<ConserveTask> conserveTasks = DaoImpl.conserveTaskDao.getConserveTaskByUserName(username);
+        for (ConserveTask task : conserveTasks) {
+            System.out.println(task);
+        }
+    }
+
+    public void UpdateConserveTask(){
+        System.out.println("请输入需要更新的任务编号");
+        Scanner scanner=new Scanner(System.in);
+        int id=scanner.nextInt();
+        Date time = new Date();
+        ConserveTask conserveTask = DaoImpl.conserveTaskDao.getConserveTaskById( id);
+        conserveTask.setConserveTaskCompletetime( time );
+        conserveTask.setConserveTaskUpdatetime( time );
+        DaoImpl.conserveTaskDao.updateConserveTask(conserveTask);
+        System.out.println("养护任务执行完成，记录已更新！");
     }
 
 }
