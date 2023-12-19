@@ -135,5 +135,19 @@ public class WjsTest {
         System.out.println(diseaseDao.getDiseaseById(2));
         //根据名称查找养护任务
         System.out.println(diseaseDao.getDiseaseByName("锈病"));
+        //增删改
+    }
+
+    @Test
+    public void MethodTest(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        MethodDao methodDao =sqlSession.getMapper(MethodDao.class);
+        //查询所有的防治方法
+        System.out.println(methodDao.getAllMethods());
+        //根据id查找防治方法
+        System.out.println(methodDao.getMethodById(3));
+        //根据名称查找防治方法
+        System.out.println(methodDao.getMethodByName("消毒处理"));
+        //增删改
     }
 }
