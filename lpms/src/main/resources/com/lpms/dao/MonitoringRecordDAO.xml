@@ -56,7 +56,26 @@
         FROM mon_plant_species_genus_family_v where plant_id=#{plantId}
     </select>
 
-<!--    MonitoringStatistics getMonitoringStatisticsByGenusName(@Param("genusName")String genusName);-->
+<!--    MonitoringStatistics getMonitoringStatisticsByPlantName(@Param("plantName")String plantName);-->
+    <select id="getMonitoringStatisticsByPlantName" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
+        SELECT
+            AVG(mon_stem_growth) AS avgStemGrowth,
+            MAX(mon_stem_growth) AS maxStemGrowth,
+            MIN(mon_stem_growth) AS minStemGrowth,
+            AVG(mon_fruit_growth) AS avgFruitGrowth,
+            MAX(mon_fruit_growth) AS maxFruitGrowth,
+            MIN(mon_fruit_growth) AS minFruitGrowth,
+            AVG(mon_canopy_temperature) AS avgCanopyTemperature,
+            MAX(mon_canopy_temperature) AS maxCanopyTemperature,
+            MIN(mon_canopy_temperature) AS minCanopyTemperature,
+            AVG(mon_leaf_temperature) AS avgLeafTemperature,
+            MAX(mon_leaf_temperature) AS maxLeafTemperature,
+            MIN(mon_leaf_temperature) AS minLeafTemperature
+        FROM mon_plant_species_genus_family_v where plant_name=#{plantName}
+    </select>
+
+
+    <!--    MonitoringStatistics getMonitoringStatisticsByGenusName(@Param("genusName")String genusName);-->
     <select id="getMonitoringStatisticsByGenusName" resultType="com.lpms.pojo.monitor.MonitoringStatistics">
         SELECT
             AVG(mon_stem_growth) AS avgStemGrowth,
