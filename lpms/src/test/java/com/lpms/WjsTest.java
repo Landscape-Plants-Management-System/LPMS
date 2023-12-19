@@ -95,14 +95,6 @@ public class WjsTest {
     public void monRecTest(){
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         MonitoringRecordDAO monitoringRecordDAO =sqlSession.getMapper(MonitoringRecordDAO.class);
-//        //查询普通记录测试
-//        System.out.println(monitoringRecordDAO.listMonitoringRecord());
-//        //查询植物详细地点测试
-//        System.out.println(monitoringRecordDAO.listMonitoringPlantAndPlaceShow());
-//        //查询植物详细信息测试
-//        System.out.println(monitoringRecordDAO.listMonitoringPlantDetailInfo());
-
-
         //查询所有植物的4个数据的平均值，最大值，最小值查询
         System.out.println(monitoringRecordDAO.getMonitoringStatistics());
         //查询某种植物的4个数据的平均值，最大值，最小值查询
@@ -119,5 +111,29 @@ public class WjsTest {
 
         //增删改
 
+    }
+    @Test
+    public void conserveTaskTest(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ConserveTaskDao conserveTaskDao =sqlSession.getMapper(ConserveTaskDao.class);
+        //查询所有的养护任务
+        System.out.println(conserveTaskDao.getAllConserveTasks());
+        //根据id查找养护任务
+        System.out.println(conserveTaskDao.getConserveTaskById(2));
+        //根据名称查找养护任务
+        System.out.println(conserveTaskDao.getConserveTaskByName("修剪花草"));
+        //增删改
+    }
+
+    @Test
+    public void DiseaseTest(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DiseaseDao diseaseDao =sqlSession.getMapper(DiseaseDao.class);
+        //查询所有的病虫害
+        System.out.println(diseaseDao.getAllDiseases());
+        //根据id查找养护任务
+        System.out.println(diseaseDao.getDiseaseById(2));
+        //根据名称查找养护任务
+        System.out.println(diseaseDao.getDiseaseByName("锈病"));
     }
 }

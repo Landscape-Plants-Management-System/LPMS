@@ -14,10 +14,11 @@
         <result property="conserveTaskUpdatetime" column="conserveTask_updatetime" />
 
         <!-- 一对一级联查询与User -->
-        <association property="user" column="user_id" javaType="com.lpms.pojo.User" select="com.lpms.dao.UserDAO.getUserById"/>
+        <association property="user" column="conserveTask_peopleid" javaType="com.lpms.pojo.User" select="com.lpms.dao.UserDAO.getUserById">
+            <result column="user_name" property="userName"/>
+        </association>
 
-        <collection property="plant" ofType="com.lpms.pojo.plant.Plant" column="conserveTaskId" select="com.lpms.dao.PlantDao.getPlantsByConserveTaskId">
-            <id column="plant_id" property="plantId"/>
+        <collection property="plant" ofType="com.lpms.pojo.plant.Plant" column="conserveTask_id" select="com.lpms.dao.PlantDao.getPlantsByConserveTaskId">
             <result column="plant_name" property="plantName"/>
         </collection>
 
@@ -26,6 +27,11 @@
     <!-- 通过ID获取ConserveTask的查询语句 -->
     <select id="getConserveTaskById" resultMap="ConserveTaskResultMap">
         SELECT * FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
+    </select>
+
+    <!-- 通过ID获取ConserveTask的查询语句 -->
+    <select id="getConserveTaskByName" resultMap="ConserveTaskResultMap">
+        SELECT * FROM conserve_task WHERE conserveTask_name = #{conserveTaskName}
     </select>
 
     <!-- 查询所有ConserveTask的查询语句 -->

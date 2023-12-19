@@ -13,7 +13,7 @@ public interface UserDAO {
     //根据用户名查询用户
     User getUserByName(@Param("userName") String userName);
 
-
+    User getUserById(int userId);
     /**
      * 增加
      */

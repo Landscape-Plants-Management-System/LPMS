@@ -9,6 +9,7 @@ public interface ConserveTaskDao {
     ConserveTask getConserveTaskById(int conserveTaskId);
 
     List<ConserveTask> getAllConserveTasks();
+    ConserveTask getConserveTaskByName(String conserveTaskName);
 
     void insertConserveTask(ConserveTask conserveTask);
 
