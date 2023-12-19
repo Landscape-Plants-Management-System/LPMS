@@ -19,6 +19,7 @@ public interface MonitoringRecordDAO {
 
     //查询某种植物的4个数据的平均值，最大值，最小值查询
     MonitoringStatistics getMonitoringStatisticsByPlantId(@Param("plantId")Integer plantId);
+    MonitoringStatistics getMonitoringStatisticsByPlantName(@Param("plantName")String plantName);
 
     //查询某属植物的4个数据的平均值，最大值，最小值查询
     MonitoringStatistics getMonitoringStatisticsByGenusName(@Param("genusName")String genusName);

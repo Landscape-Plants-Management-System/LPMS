@@ -27,7 +27,7 @@ public class DeptInChargeController {
                     queryAllWorker();
                     break;
                 case 3:
-
+                    userSharingController.queryMonitoringRecord();
                     break;
                 case 4:
 
@@ -47,4 +47,6 @@ public class DeptInChargeController {
         System.out.println("请选择：1.查看所有监测人员信息 2.查看所有养护人员信息");
 
     }
+
+
 }
