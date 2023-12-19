@@ -125,6 +125,7 @@ public class WjsTest {
         System.out.println(conserveTaskDao.getConserveTaskById(2));
         //根据名称查找养护任务
         System.out.println(conserveTaskDao.getConserveTaskByName("修剪花草"));
+        System.out.println(conserveTaskDao.getConserveTaskByUserName("养护人员1"));
         //增
         ConserveTask conserveTask =new ConserveTask();
         conserveTask.setConserveTaskName("维护树种");

@@ -29,6 +29,14 @@
         SELECT * FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
     </select>
 
+    <!-- 通过用户名获取相关的ConserveTask的查询语句 -->
+    <select id="getConserveTaskByUserName" resultMap="ConserveTaskResultMap" parameterType="String">
+        SELECT ct.*
+        FROM conserve_task ct
+                 JOIN user u ON ct.conserveTask_peopleid = u.user_id
+        WHERE u.user_name = #{username}
+    </select>
+
     <!-- 通过ID获取ConserveTask的查询语句 -->
     <select id="getConserveTaskByName" resultMap="ConserveTaskResultMap">
         SELECT * FROM conserve_task WHERE conserveTask_name = #{conserveTaskName}
