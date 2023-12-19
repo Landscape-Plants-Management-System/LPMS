@@ -340,6 +340,19 @@ public class UserSharingController {
         conserveTask.setUser(user);
         DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
     }
+    public void DeleteConserveTask()
+    {
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("请输入要删除的任务编号");
+        DaoImpl.conserveTaskDao.deleteConserveTask(scanner.nextInt());
+    }
+
+    public void DeleteDisease()
+    {
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("请输入要删除的病虫害编号");
+        DaoImpl.diseaseDao.deleteDisease(scanner.nextInt());
+    }
     public void getConserveTaskByUsername(){
         //根据名字查询种
         System.out.println("请输入执行人员名称");

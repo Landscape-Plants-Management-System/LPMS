@@ -17,7 +17,7 @@ public class DeptInChargeController {
     public void indexIn(){
         initController();
         while(true){
-            System.out.println("请选择：1.园林植物基本信息查询 2.查看所有工作人员信息 3.查询监测数据 4.查询养护记录 5.发布养护任务");
+            System.out.println("请选择：1.园林植物基本信息查询 2.查看所有工作人员信息 3.查询监测数据 4.查询养护记录 5.发布养护任务 6.删除养护任务");
             chooseFunction=scanner.nextInt();
             switch (chooseFunction){
                 case 1:
@@ -35,6 +35,8 @@ public class DeptInChargeController {
                 case 5:
                     userSharingController.InsertConserveTask();
                     break;
+                case 6:
+                    userSharingController.DeleteConserveTask();
                 default:
                     System.out.println("输入错误，请重新输入");
                     break;
