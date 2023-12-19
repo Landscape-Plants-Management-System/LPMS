@@ -1,7 +1,6 @@
 package com.lpms.dao;
 
-import com.lpms.pojo.*;
-import com.lpms.pojo.plant.Growth;
+import com.lpms.pojo.classification.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,33 +12,33 @@ public interface ClassificationDao {
      */
     //科
     List<Family> listFamilies();
-    Family getFamilyByFamilyId(@Param("family_id")Integer family_id);
-    Family getFamilyByFamilyName(@Param("devName")String family_name);
+    //Family getFamilyByFamilyId(@Param("family_id")Integer family_id);
+    Family getFamilyByFamilyName(@Param("family_name")String family_name);
 
     //属
     List<Genus> listGenuses();
-    Genus getGenusByGenusId(@Param("genus_id")Integer genus_id);
+    //Genus getGenusByGenusId(@Param("genus_id")Integer genus_id);
     Genus getGenusByGenusName(@Param("genus_name")String genus_name);
 
     //种
     List<Species> listSpecies();
-    Species getSpeciesBySpeciesId(@Param("species_id")Integer species_id);
+    //Species getSpeciesBySpeciesId(@Param("species_id")Integer species_id);
     Species getSpeciesBySpeciesName(@Param("species_name")String species_name);
 
     //分布区域
     List<Distribution> listDistributions();
-    Distribution getFamilyByDistributionId(@Param("distribution_id")Integer distribution_id);
-    Distribution getFamilyByDistributionName(@Param("distribution_name")String distribution_name);
+    //Distribution getFamilyByDistributionId(@Param("distribution_id")Integer distribution_id);
+    Distribution getFamilyByDistributionName(@Param("distribution_provincial")String distribution_provincial);
 
     //生长环境
     List<Environment> listEnvironment();
-    Environment getEnvironmentByEnvironmentId(@Param("environment_id")Integer environment_id);
-    Environment getEnvironmentByEnvironmentName(@Param("environment_name")String environment_name);
+    //Environment getEnvironmentByEnvironmentId(@Param("environment_id")Integer environment_id);
+    List<Environment> getEnvironmentByEnvironmentName(@Param("environment_name")String environment_name);
 
     //生长阶段
     List<Growth> listGrowth();
-    Genus getGrowthByGrowthId(@Param("growth_id")Integer growth_id);
-    Genus getGrowthByGrowthName(@Param("growth_name")String growth_name);
+    //Growth getGrowthByGrowthId(@Param("growth_id")Integer growth_id);
+    Growth getGrowthByGrowthName(@Param("growth_name")String growth_name);
 
     /**
      * 增加，实现对园林植物分类信息的增加
@@ -55,29 +54,27 @@ public interface ClassificationDao {
      * 删除，实现对园林植物分类信息的删除
      */
     //科
-    void deleteFamilyById(@Param("family_id")Integer family_id);
+    //void deleteFamilyById(@Param("family_id")Integer family_id);
     void deleteFamilyByName(@Param("family_name")String family_name);
 
     //属
-    void deleteGenusById(@Param("genus_id")Integer genus_id);
+    //void deleteGenusById(@Param("genus_id")Integer genus_id);
     void deleteGenusByName(@Param("genus_name")String genus_name);
 
     //种
-    void deleteSpeciesById(@Param("species_id")Integer species_id);
+    //void deleteSpeciesById(@Param("species_id")Integer species_id);
     void deleteSpeciesByName(@Param("species_name")String species_name);
 
     //分布区域
-    void deleteDistributionById(@Param("distribution_id")Integer distribution_id);
+    //void deleteDistributionById(@Param("distribution_id")Integer distribution_id);
     void deleteDistributionByProvincial(@Param("distribution_provincial")String distribution_provincial);
-    void deleteDistributionByCity(@Param("distribution_city")String distribution_city);
-    void deleteDistributionByCounty(@Param("distribution_county")String distribution_county);
 
     //生长环境
-    void deleteEnvironmentById(@Param("environment_id")Integer environment_id);
+    //void deleteEnvironmentById(@Param("environment_id")Integer environment_id);
     void deleteEnvironmentByName(@Param("environment_name")String environment_name);
 
     //生长周期
-    void deleteGrowthById(@Param("growth_id")Integer growth_id);
+    //void deleteGrowthById(@Param("growth_id")Integer growth_id);
     void deleteGrowthByName(@Param("growth_name")String growth_name);
 
     /**

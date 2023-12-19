@@ -1,45 +1,45 @@
 package com.lpms.pojo.plant;
 
 public class Picture {
-    private int picture_id;
-    private int plant_id;
+    private int pictureId;
+    private int plantId;
 
-    private int user_id;
+    private int userId;
 
-    private String pic_path;
+    private String picPath;
 
     private String describe;
 
-    public int getPicture_id() {
-        return picture_id;
+    public int getPictureId() {
+        return pictureId;
     }
 
-    public void setPicture_id(int picture_id) {
-        this.picture_id = picture_id;
+    public void setPictureId(int pictureId) {
+        this.pictureId = pictureId;
     }
 
-    public int getPlant_id() {
-        return plant_id;
+    public int getPlantId() {
+        return plantId;
     }
 
-    public void setPlant_id(int plant_id) {
-        this.plant_id = plant_id;
+    public void setPlantId(int plantId) {
+        this.plantId = plantId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getPic_path() {
-        return pic_path;
+    public String getPicPath() {
+        return picPath;
     }
 
-    public void setPic_path(String pic_path) {
-        this.pic_path = pic_path;
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
     }
 
     public String getDescribe() {

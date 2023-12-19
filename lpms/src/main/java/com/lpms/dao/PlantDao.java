@@ -1,7 +1,7 @@
 package com.lpms.dao;
 
 import com.lpms.pojo.plant.PlantInfo;
-import com.lpms.pojo.Plant_number;
+import com.lpms.pojo.plant.Plant_number;
 
 import java.util.List;
 
@@ -10,6 +10,9 @@ public interface PlantDao {
     /**
      * 查询
      */
+    //获取平台所有植物信息
+    List<PlantInfo>selectAllPlant();
+
     //根据植物名称进行查询
     List<PlantInfo>selectPlantByName(String plant_name);
 
@@ -29,7 +32,7 @@ public interface PlantDao {
      * 插入
      */
     //增添新植物
-    int insterPlant(String plant_name,int species_id,int place_id );
+    int insertPlant(String plant_name,int species_id,int place_id );
 
 
 
@@ -39,7 +42,7 @@ public interface PlantDao {
      */
 
     //修改植物生长周期
-    int upadatePlantgrowth(int plant_id, int growth_id );
+    int updatePlantgrowth(int plant_id, int growth_id );
 
 
 

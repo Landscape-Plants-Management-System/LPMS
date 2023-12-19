@@ -8,10 +8,8 @@
         SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
     </select>
 
-    <select id="getPlantsByConserveTaskId" resultType="com.lpms.pojo.plant.Plant">
-        SELECT p.* FROM plant p
-        INNER JOIN plant_task pt ON p.plant_id = pt.plant_id
-        WHERE pt.conserveTask_id = #{conserveTaskId}
+    <select id="selectAllPlant" parameterType="String" resultType="com.lpms.pojo.plant.PlantInfo">
+        SELECT * FROM plant_info_v
     </select>
 
     <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.plant.PlantInfo">
@@ -23,9 +21,9 @@
         SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{word}, '%')
     </select>
 
-    <select id="countPlant" resultType="com.lpms.pojo.Plant_number">
+    <select id="countPlant" resultType="com.lpms.pojo.plant.Plant_number">
         SELECT *
-        FROM plant_number
+        FROM plant_number_v
     </select>
 
 
@@ -33,9 +31,5 @@
         INSERT INTO plant (plant_name, species_id, place_id, growth_id)
         VALUES (#{plant_name}, #{species_id}, #{place_id}, #{growth_id})
     </insert>
-
-
-
-
 
 </mapper>

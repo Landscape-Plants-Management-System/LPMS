@@ -4,78 +4,81 @@ import com.lpms.dao.DeviceDAO;
 import com.lpms.dao.MonitoringRecordDAO;
 import com.lpms.dao.RoleDAO;
 import com.lpms.dao.UserDAO;
+import com.lpms.dao.impl.DaoImpl;
 import com.lpms.pojo.User;
 import com.lpms.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Scanner;
+
 public class AppController {
-    public static UserDAO userDAO;
-    public static RoleDAO roleDAO;
-    public static DeviceDAO deviceDAO;
-    public static MonitoringRecordDAO monitoringRecordDAO;
-
-    public static void initDAO() {
-        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
-        userDAO = sqlSession.getMapper(UserDAO.class);
-        roleDAO = sqlSession.getMapper(RoleDAO.class);
-        deviceDAO = sqlSession.getMapper(DeviceDAO.class);
-        monitoringRecordDAO = sqlSession.getMapper(MonitoringRecordDAO.class);
+    boolean loginFlag;
+    User myUser;
+    Scanner scanner;
+    public void initApp(){
+        //初始化
+        DaoImpl.initDAO();
+        loginFlag=false;
+        myUser=null;
+        scanner = new Scanner(System.in);
     }
-    public void appIn(){
-        initDAO();
-//        boolean login_flag=false;
-//        User myuser=null;
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("欢迎登录植物园林关系系统");
-//        do {
-//            System.out.println("请输入登录账号");
-//            String user_name = scanner.next();
-//
-//            System.out.println("请输入登录密码");
-//            String password=scanner.next();
-//
-//            UserDAO userdao=SqlSessionUtils.getSqlSession().getMapper(UserDAO.class);
-//            myuser=userdao.selectUserByName(user_name);
-//            if(myuser!=null)
-//            {
-//                if(myuser.getPassword().equals(password))
-//                {
-//                    login_flag=true;
-//                }else {
-//
-//                    System.out.println("密码输入错误");
-//                }
-//            }else{
-//                System.out.println("该用户不存在");
-//            }
-//
-//        }while(login_flag);
-//
-//        if(login_flag)
-//        {
-//            switch (myuser.getRole().toString())
-//            {
-//                case "管理员":
-//                    //管理员页面功能
-//
-//
-//                    break;
-//                case "养护人员":
-//                    //养护人员功能
-//
-//                    break;
-//                case "检测人员":
-//                    //检测人员功能
-//                    break;
-//                case "普通用户":
-//                    //普通用户
-//
-//                    break;
-//
-//
-//            }
-//
-//        }
 
+    public void loginApp(){
+        System.out.println("欢迎登录植物园林关系系统");
+        do {
+            System.out.println("请输入用户名");
+            String userName = scanner.nextLine();
+
+            System.out.println("请输入密码");
+            String password=scanner.nextLine();
+
+            System.out.println(userName+"::"+password);
+
+            myUser=DaoImpl.userDAO.getUserByName(userName);
+            if(myUser!=null)
+            {
+                if(myUser.getUserPassword().equals(password)) {
+                    loginFlag=true;
+                }else {
+                    System.out.println("密码输入错误");
+                }
+            }else{
+                System.out.println("该用户不存在");
+            }
+        }while(!loginFlag);
+
+        //登陆成功
+        switch (myUser.getRoleId())
+        {
+            case 1:
+                //上级主管部门页面功能
+                System.out.println("主管部门登陆成功");
+                DeptInChargeController deptInChargeController=new DeptInChargeController();
+                deptInChargeController.indexIn();
+                break;
+            case 2:
+                //系统管理员功能
+                System.out.println("系统管理员登陆成功");
+                SysAdminController sysAdminController=new SysAdminController();
+                sysAdminController.indexIn();
+                break;
+            case 3:
+                //监测人员功能
+                System.out.println("监测人员登陆成功");
+                MonPersonnelController monPersonnelController=new MonPersonnelController();
+                monPersonnelController.indexIn();
+                break;
+            case 4:
+                //养护人员
+                System.out.println("养护人员登陆成功");
+                MaintenancePersonnelController maintenancePersonnelController=new MaintenancePersonnelController();
+                maintenancePersonnelController.indexIn();
+                break;
+        }
+    }
+
+    public void appIn(){
+        initApp();
+        loginApp();
     }
 }
