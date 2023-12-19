@@ -17,11 +17,14 @@ public class SysAdminController {
     public void indexIn(){
         initController();
         while(true){
-            System.out.println("请选择：1.园林植物基本信息查询");
+            System.out.println("请选择：1.病虫害信息查询 2.添加病虫害记录");
             chooseFunction=scanner.nextInt();
             switch (chooseFunction){
                 case 1:
-                    userSharingController.plantBasicQuery();
+                    userSharingController.getAllDisease();
+                    break;
+                case 2:
+                    userSharingController.InsertDisease();
                     break;
                 default:
                     System.out.println("输入错误，请重新输入");

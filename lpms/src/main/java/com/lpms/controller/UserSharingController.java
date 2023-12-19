@@ -1,9 +1,13 @@
 package com.lpms.controller;
 
 import com.lpms.dao.ClassificationDao;
+import com.lpms.dao.DiseaseDao;
 import com.lpms.dao.impl.DaoImpl;
+import com.lpms.pojo.User;
 import com.lpms.pojo.classification.*;
 import com.lpms.pojo.conserveTask.ConserveTask;
+import com.lpms.pojo.disease.Disease;
+import com.lpms.pojo.disease.Method;
 import com.lpms.pojo.monitor.Device;
 import com.lpms.pojo.monitor.MonitoringPlantDetailInfo;
 import com.lpms.pojo.monitor.MonitoringRecordShow;
@@ -280,7 +284,62 @@ public class UserSharingController {
         }
     }
 
+    public void getAllDisease() {
+        // 根据名字查询养护任务
+        List<Disease> diseases = DaoImpl.diseaseDao.getAllDiseases();
+        // 遍历列表并输出每个元素的内容
+        for (Disease disease: diseases) {
+            System.out.println(disease);
+        }
+    }
 
+    public void InsertDisease() {
+        // 根据名字查询养护任务
+        System.out.println("请输入病虫害信息");
+        Scanner scanner=new Scanner(System.in);
+        Disease newdisease = new Disease();
+        Method newmethod = new Method();
+        System.out.println("请输入病虫害名称");
+        newdisease.setDiseaseName(scanner.nextLine());
+        System.out.println("请输入防治方法名称");
+        newmethod.setMethodName(scanner.nextLine());
+        System.out.println("请输入药剂名称");
+        newmethod.setDrugName(scanner.nextLine());
+        System.out.println("请输入药剂用量");
+        newmethod.setDrugDosage(scanner.nextDouble());
+        System.out.println("请输入作用期限");
+        newmethod.setDrugTime(scanner.nextDouble());
+        int id=DaoImpl.methodDao.insertMethod(newmethod);
+        newmethod.setMethodId(id);
+        newdisease.setMethod(newmethod);
+        DaoImpl.diseaseDao.insertDisease(newdisease);
+        List<Disease> diseases = DaoImpl.diseaseDao.getAllDiseases();
+        // 遍历列表并输出每个元素的内容
+        for (Disease disease: diseases) {
+            System.out.println(disease);
+        }
+    }
+
+    public void InsertConserveTask()
+    {
+        ConserveTask conserveTask =new ConserveTask();
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("请输入养护任务名称");
+        conserveTask.setConserveTaskName(scanner.nextLine());
+        System.out.println("请输入养护任务描述");
+        conserveTask.setConserveTaskDescribe(scanner.nextLine());
+        System.out.println("请输入养护任务地址");
+        conserveTask.setConserveTaskPlace(scanner.nextLine());
+        Date date=new Date();
+        conserveTask.setConserveTaskCreatetime(date);
+        conserveTask.setConserveTaskRequiretime(date);
+        conserveTask.setConserveTaskUpdatetime(date);
+        User user=new User();
+        System.out.println("请输入执行人员编号");
+        user.setUserId(scanner.nextInt());
+        conserveTask.setUser(user);
+        DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+    }
     public void getConserveTaskByUsername(){
         //根据名字查询种
         System.out.println("请输入执行人员名称");

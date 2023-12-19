@@ -25,7 +25,7 @@
         SELECT * FROM method WHERE method_name = #{methodName}
     </select>
     <!-- 添加新的Method的插入语句 -->
-    <insert id="insertMethod" parameterType="com.lpms.pojo.disease.Method">
+    <insert id="insertMethod" parameterType="com.lpms.pojo.disease.Method" useGeneratedKeys="true" keyProperty="method_id">
         INSERT INTO method (method_name, drug_name, drug_dosage, drug_time)
         VALUES (#{methodName}, #{drugName}, #{drugDosage}, #{drugTime})
     </insert>

@@ -12,7 +12,7 @@ public interface MethodDao {
     //按防治方法名查询
     Method getMethodByName(String methodName);
     //插入防治方法表
-    void insertMethod(Method method);
+    int insertMethod(Method method);
     //更新防治方法表
     void updateMethod(Method method);
     //删除防治方法表
