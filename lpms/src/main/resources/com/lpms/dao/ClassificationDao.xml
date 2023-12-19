@@ -195,13 +195,20 @@
         SELECT * FROM all_classification_info_v;
     </select>
 
-    <!-- 根据指定属性查找下属的植物情况 -->
-    <select id="findSubordinatePlants" resultType="com.lpms.pojo.classification.Family_Genus_Species_Info">
-        SELECT family_name, genus_name, species_name
+    <!-- 根据科名查找下属的植物情况 -->
+    <select id="findSubordinatePlantsFamily" resultType="com.lpms.pojo.classification.Family_Genus_Species_Info">
+        SELECT *
         FROM family_genus_species_info_v
-        WHERE (family_name = #{keyword} OR family_id = #{keyword} OR genus_name = #{keyword} OR genus_id = #{keyword}
-        OR species_name = #{keyword} OR species_id = #{keyword})
-        AND (species_id IS NULL OR species_id = '')
+        WHERE family_name LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY family_name,genus_name,species_name
+    </select>
+
+    <!-- 根据属名查找下属的植物情况 -->
+    <select id="findSubordinatePlantsGenus" resultType="com.lpms.pojo.classification.Family_Genus_Species_Info">
+        SELECT genus_id,genus_name,species_id,species_name
+        FROM family_genus_species_info_v
+        WHERE genus_name LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY genus_name,species_name
     </select>
 
 

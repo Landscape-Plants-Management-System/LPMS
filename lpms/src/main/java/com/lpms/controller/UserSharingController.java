@@ -105,20 +105,30 @@ public class UserSharingController {
             System.out.println(completeClassificationInfo);
         }
     }
-    private void findSubordinatePlants(){
+    private void findSubordinatePlantsFamily(){
+        //根据指定属性查找下属的植物
+        System.out.println("请输入科名");
+        Scanner scanner=new Scanner(System.in);
+        String keyword=scanner.nextLine();
+        for (Family_Genus_Species_Info subordinatePlant : DaoImpl.classificationDao.findSubordinatePlantsFamily(keyword)) {
+            System.out.println(subordinatePlant);
+        }
+    }
+
+    private void findSubordinatePlantsGenus(){
         //根据指定属性查找下属的植物
         System.out.println("请输入属名");
         Scanner scanner=new Scanner(System.in);
         String keyword=scanner.nextLine();
-        for (Family_Genus_Species_Info subordinatePlant : DaoImpl.classificationDao.findSubordinatePlants(keyword)) {
+        for (Family_Genus_Species_Info subordinatePlant : DaoImpl.classificationDao.findSubordinatePlantsGenus(keyword)) {
             System.out.println(subordinatePlant);
         }
     }
 
     public void plantBasicQuery(){
         System.out.println("请选择查询项目：1.平台所有植物信息 2.平台所有种信息 3.平台所有属信息 4.平台所有科信息 5.每种植物的数量");
-        System.out.println("请选择查询项目：6.查询简易植物分类信息 7.查看完整的植物分类信息 8.根据指定属性查找下属的植物");
-        System.out.println("请选择查询项目：9.根据种名查询信息 10.根据属名查询属的信息 11.根据科名查询科的信息");
+        System.out.println("请选择查询项目：6.查询简易植物分类信息 7.查看完整的植物分类信息 8.根据科名查找下属的植物 9.根据属名查找下属的植物");
+        System.out.println("请选择查询项目：10.根据种名查询信息 11.根据属名查询属的信息 12.根据科名查询科的信息");
         Scanner scanner=new Scanner(System.in);
         int choose=scanner.nextInt();
         switch (choose){
@@ -144,15 +154,18 @@ public class UserSharingController {
                 getCompleteClassificationInfo();
                 break;
             case 8:
-                findSubordinatePlants();
+                findSubordinatePlantsFamily();
                 break;
             case 9:
-                getSpeciesBySpeciesName();
+                findSubordinatePlantsGenus();
                 break;
             case 10:
-                getGenusByGenusName();
+                getSpeciesBySpeciesName();
                 break;
             case 11:
+                getGenusByGenusName();
+                break;
+            case 12:
                 getFamilyByFamilyName();
                 break;
             default:
@@ -161,8 +174,5 @@ public class UserSharingController {
         }
     }
 
-    /**
-     *
-     */
 
 }

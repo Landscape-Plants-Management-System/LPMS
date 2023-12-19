@@ -96,7 +96,10 @@ public interface ClassificationDao {
     //查看完整的植物分类信息，返回全部信息
     List<Complete_Classification_Info> getCompleteClassificationInfo();
 
-    //根据指定属性查找下属的植物情况
-    List<Family_Genus_Species_Info> findSubordinatePlants(@Param("keyword") String keyword);
+    //根据科名查找下属的植物情况
+    List<Family_Genus_Species_Info> findSubordinatePlantsFamily(@Param("keyword") String keyword);
+
+    //根据属名查找下属的植物情况
+    List<Family_Genus_Species_Info> findSubordinatePlantsGenus(@Param("keyword") String keyword);
 
 }

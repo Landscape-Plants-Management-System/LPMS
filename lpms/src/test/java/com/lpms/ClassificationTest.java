@@ -139,26 +139,42 @@ public class ClassificationTest {
         ClassificationDao classificationDao=sqlSession.getMapper(ClassificationDao.class);
         String keyword = "白"; // 设置关键字
         List<Simple_Classification_Info> result = classificationDao.getSimpleClassificationInfo(keyword);
-        System.out.println(result);
+        for (Simple_Classification_Info info : result) {
+            System.out.println(info); // 在控制台输出每一个结果
+        }
 
     }
 
     @Test
     public void testGetCompleteClassificationInfo() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
-        ClassificationDao classificationDao=sqlSession.getMapper(ClassificationDao.class);
+        ClassificationDao classificationDao = sqlSession.getMapper(ClassificationDao.class);
         List<Complete_Classification_Info> result = classificationDao.getCompleteClassificationInfo();
-        System.out.println(result);
-
+        for (Complete_Classification_Info info : result) {
+            System.out.println(info); // 在控制台输出每一个结果
+        }
     }
 
     @Test
-    public void testFindSubordinatePlants() {
+    public void findSubordinatePlantsFamily() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         ClassificationDao classificationDao=sqlSession.getMapper(ClassificationDao.class);
         String keyword = "白"; // 设置关键字
-        List<Family_Genus_Species_Info> result = classificationDao.findSubordinatePlants(keyword);
-        System.out.println(result);
+        List<Family_Genus_Species_Info> result = classificationDao.findSubordinatePlantsFamily(keyword);
+        for (Family_Genus_Species_Info info : result) {
+            System.out.println(info); // 在控制台输出每一个结果
+        }
+    }
+
+    @Test
+    public void findSubordinatePlantsGenus() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ClassificationDao classificationDao=sqlSession.getMapper(ClassificationDao.class);
+        String keyword = "斑叶兰属"; // 设置关键字
+        List<Family_Genus_Species_Info> result = classificationDao.findSubordinatePlantsGenus(keyword);
+        for (Family_Genus_Species_Info info : result) {
+            System.out.println(info); // 在控制台输出每一个结果
+        }
     }
 
 }
