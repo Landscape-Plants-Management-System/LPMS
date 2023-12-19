@@ -36,8 +36,8 @@
     <!-- 添加新的ConserveTask的插入语句 -->
     <insert id="insertConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask">
         INSERT INTO conserve_task (conserveTask_name, conserveTask_describe, conserveTask_peopleid, conserveTask_place,
-                                   conserveTask_requiretime, conserve_task_completetime,
-                                   conserve_task_createtime, conserve_task_updatetime)
+                                   conserveTask_requiretime, conserveTask_completetime,
+                                   conserveTask_createtime, conserveTask_updatetime)
         VALUES (#{conserveTaskName}, #{conserveTaskDescribe}, #{user.userId}, #{conserveTaskPlace},
                 #{conserveTaskRequiretime}, #{conserveTaskCompletetime},
                 #{conserveTaskCreatetime}, #{conserveTaskUpdatetime})
@@ -58,7 +58,7 @@
 
     <!-- 通过ID删除ConserveTask的删除语句 -->
     <delete id="deleteConserveTask" parameterType="int">
-        DELETE FROM conserve_task WHERE conservetask_id = #{conserveTaskId}
+        DELETE FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
     </delete>
 
 </mapper>
