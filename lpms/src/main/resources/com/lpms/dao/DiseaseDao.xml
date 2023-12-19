@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lpms.dao.DiseaseDao">
+
+    <resultMap id="DiseaseResultMap" type="com.lpms.pojo.disease.Disease">
+        <id property="diseaseId" column="disease_id" />
+        <result property="diseaseName" column="disease_name" />
+        <association property="method" column="method_id" javaType="com.lpms.pojo.disease.Method" select="com.lpms.dao.MethodDao.getMethodById"/>
+    </resultMap>
+
+    <!-- 通过ID获取Disease的查询语句，包括与Method的一对一级联查询 -->
+    <select id="getDiseaseById" resultMap="DiseaseResultMap">
+        SELECT * FROM disease WHERE disease_id = #{diseaseId}
+    </select>
+
+    <!-- 查询所有Disease的查询语句，包括与Method的一对一级联查询 -->
+    <select id="getAllDiseases" resultMap="DiseaseResultMap">
+        SELECT * FROM disease
+    </select>
+
+    <!-- 通过疾病名字查询Disease的查询语句，包括与Method的一对一级联查询 -->
+    <select id="getDiseaseByName" resultMap="DiseaseResultMap">
+        SELECT * FROM disease WHERE disease_name = #{diseaseName}
+    </select>
+    <!-- 添加新的Disease的插入语句 -->
+    <insert id="insertDisease" parameterType="com.lpms.pojo.disease.Disease">
+        INSERT INTO disease (disease_name, method_id)
+        VALUES (#{diseaseName}, #{method.methodId})
+    </insert>
+
+    <!-- 修改现有Disease的更新语句 -->
+    <update id="updateDisease" parameterType="com.lpms.pojo.disease.Disease">
+        UPDATE disease SET
+                           disease_name = #{diseaseName},
+                           method_id = #{method.methodId}
+        WHERE disease_id = #{diseaseId}
+    </update>
+
+    <!-- 通过ID删除Disease的删除语句 -->
+    <delete id="deleteDisease" parameterType="int">
+        DELETE FROM disease WHERE disease_id = #{diseaseId}
+    </delete>
+
+</mapper>

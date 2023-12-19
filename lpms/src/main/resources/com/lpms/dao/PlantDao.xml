@@ -8,6 +8,12 @@
         SELECT * FROM plant WHERE plant_name LIKE CONCAT('%', #{plant_name}, '%')
     </select>
 
+    <select id="getPlantsByConserveTaskId" resultType="com.lpms.pojo.plant.Plant">
+        SELECT p.* FROM plant p
+        INNER JOIN plant_task pt ON p.plant_id = pt.plant_id
+        WHERE pt.conserveTask_id = #{conserveTaskId}
+    </select>
+
     <select id="selectPlantById" parameterType="int" resultType="com.lpms.pojo.plant.PlantInfo">
         SELECT * FROM plant WHERE plant_id = #{plant_id}
     </select>

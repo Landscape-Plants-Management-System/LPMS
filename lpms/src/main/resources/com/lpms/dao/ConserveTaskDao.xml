@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lpms.dao.ConserveTaskDao">
+
+    <resultMap id="ConserveTaskResultMap" type="com.lpms.pojo.conserveTask.ConserveTask">
+        <id property="conserveTaskId" column="conserveTask_id" />
+        <result property="conserveTaskName" column="conserveTask_name" />
+        <result property="conserveTaskDescribe" column="conserveTask_describe" />
+        <result property="conserveTaskPlace" column="conserveTask_place" />
+        <result property="conserveTaskRequiretime" column="conserveTask_requiretime" />
+        <result property="conserveTaskCompletetime" column="conserveTask_completetime" />
+        <result property="conserveTaskCreatetime" column="conserveTask_createtime" />
+        <result property="conserveTaskUpdatetime" column="conserveTask_updatetime" />
+
+        <!-- 一对一级联查询与User -->
+        <association property="user" column="user_id" javaType="com.lpms.pojo.User" select="com.lpms.dao.UserDAO.getUserById"/>
+
+        <collection property="plant" ofType="com.lpms.pojo.plant.Plant" column="conserveTaskId" select="com.lpms.dao.PlantDao.getPlantsByConserveTaskId">
+            <id column="plant_id" property="plantId"/>
+            <result column="plant_name" property="plantName"/>
+        </collection>
+
+    </resultMap>
+
+    <!-- 通过ID获取ConserveTask的查询语句 -->
+    <select id="getConserveTaskById" resultMap="ConserveTaskResultMap">
+        SELECT * FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
+    </select>
+
+    <!-- 查询所有ConserveTask的查询语句 -->
+    <select id="getAllConserveTasks" resultMap="ConserveTaskResultMap">
+        SELECT * FROM conserve_task
+    </select>
+
+    <!-- 添加新的ConserveTask的插入语句 -->
+    <insert id="insertConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask">
+        INSERT INTO conserve_task (conserveTask_name, conserveTask_describe, conserveTask_peopleid, conserveTask_place,
+                                   conserveTask_requiretime, conserve_task_completetime,
+                                   conserve_task_createtime, conserve_task_updatetime)
+        VALUES (#{conserveTaskName}, #{conserveTaskDescribe}, #{user.userId}, #{conserveTaskPlace},
+                #{conserveTaskRequiretime}, #{conserveTaskCompletetime},
+                #{conserveTaskCreatetime}, #{conserveTaskUpdatetime})
+    </insert>
+
+    <!-- 修改现有ConserveTask的更新语句 -->
+    <update id="updateConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask">
+        UPDATE conserve_task SET
+                                 conserveTask_name = #{conserveTaskName},
+                                 conserveTask_describe = #{conserveTaskDescribe},
+                                 conserveTask_peopleid = #{user.userId},
+                                 conserveTask_place = #{conserveTaskPlace},
+                                 conserveTask_requiretime = #{conserveTaskRequiretime},
+                                 conserveTask_completetime = #{conserveTaskCompletetime},
+                                 conserveTask_updatetime = #{conserveTaskUpdatetime}
+        WHERE conserveTask_id = #{conserveTaskId}
+    </update>
+
+    <!-- 通过ID删除ConserveTask的删除语句 -->
+    <delete id="deleteConserveTask" parameterType="int">
+        DELETE FROM conserve_task WHERE conservetask_id = #{conserveTaskId}
+    </delete>
+
+</mapper>

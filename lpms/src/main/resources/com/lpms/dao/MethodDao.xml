@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lpms.dao.MethodDao">
+
+    <resultMap id="MethodResultMap" type="com.lpms.pojo.disease.Method">
+        <id property="methodId" column="method_id" />
+        <result property="methodName" column="method_name" />
+        <result property="drugName" column="drug_name" />
+        <result property="drugDosage" column="drug_dosage" />
+        <result property="drugTime" column="drug_time" />
+    </resultMap>
+
+    <!-- 通过ID获取Method的查询语句 -->
+    <select id="getMethodById" resultMap="MethodResultMap">
+        SELECT * FROM method WHERE method_id = #{methodId}
+    </select>
+    <!-- 查询所有Method的查询语句 -->
+    <select id="getAllMethods" resultMap="MethodResultMap">
+        SELECT * FROM method
+    </select>
+
+    <!-- 通过方法名字查询Method的查询语句 -->
+    <select id="getMethodByName" resultMap="MethodResultMap">
+        SELECT * FROM method WHERE method_name = #{methodName}
+    </select>
+    <!-- 添加新的Method的插入语句 -->
+    <insert id="insertMethod" parameterType="com.lpms.pojo.disease.Method">
+        INSERT INTO method (method_name, drug_name, drug_dosage, drug_time)
+        VALUES (#{methodName}, #{drugName}, #{drugDosage}, #{drugTime})
+    </insert>
+
+    <!-- 修改现有Method的更新语句 -->
+    <update id="updateMethod" parameterType="com.lpms.pojo.disease.Method">
+        UPDATE method SET
+                          method_name = #{methodName},
+                          drug_name = #{drugName},
+                          drug_dosage = #{drugDosage},
+                          drug_time = #{drugTime}
+        WHERE method_id = #{methodId}
+    </update>
+
+    <!-- 通过ID删除Method的删除语句 -->
+    <delete id="deleteMethod" parameterType="int">
+        DELETE FROM method WHERE method_id = #{methodId}
+    </delete>
+
+</mapper>

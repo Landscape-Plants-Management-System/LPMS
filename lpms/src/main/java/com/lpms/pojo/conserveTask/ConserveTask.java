@@ -1,114 +1,116 @@
 package com.lpms.pojo.conserveTask;
 
+import com.lpms.pojo.User;
+import com.lpms.pojo.plant.Plant;
+
 import java.util.Date;
 import java.util.List;
 
 public class ConserveTask {
-    private int conserveTask_id;
-    private String conserveTask_name;
-    private String conserveTask_describe;
-    private int conserveTask_peopleid;
-    private List<Integer> conserveTask_plantid;
-    private List<String> conserveTask_plantname;
-    private int conserveTask_placeid;
-    private Date conserveTask_requiretime;
-    private Date conserveTask_completetime;
-    private Date conserveTask_createtime;
-    private Date conserveTask_updatetime;
+    private int conserveTaskId;
+    private String conserveTaskName;
+    private String conserveTaskDescribe;
+    private User user;
+    private List<Plant> plant;
+    private String conserveTaskPlace;
+    private Date conserveTaskRequiretime;
+    private Date conserveTaskCompletetime;
+    private Date conserveTaskCreatetime;
+    private Date conserveTaskUpdatetime;
 
-    public int getConserveTask_id() {
-        return conserveTask_id;
+    public int getConserveTaskId() {
+        return conserveTaskId;
     }
 
-    public void setConserveTask_id(int conserveTask_id) {
-        this.conserveTask_id = conserveTask_id;
+    public void setConserveTaskId(int conserveTaskId) {
+        this.conserveTaskId = conserveTaskId;
     }
 
-    public String getConserveTask_name() {
-        return conserveTask_name;
+    public String getConserveTaskName() {
+        return conserveTaskName;
     }
 
-    public void setConserveTask_name(String conserveTask_name) {
-        this.conserveTask_name = conserveTask_name;
+    public void setConserveTaskName(String conserveTaskName) {
+        this.conserveTaskName = conserveTaskName;
     }
 
-    public String getConserveTask_describe() {
-        return conserveTask_describe;
+    public String getConserveTaskDescribe() {
+        return conserveTaskDescribe;
     }
 
-    public void setConserveTask_describe(String conserveTask_describe) {
-        this.conserveTask_describe = conserveTask_describe;
+    public void setConserveTaskDescribe(String conserveTaskDescribe) {
+        this.conserveTaskDescribe = conserveTaskDescribe;
     }
 
-    public int getConserveTask_peopleid() {
-        return conserveTask_peopleid;
+    public User getUser() {
+        return user;
     }
 
-    public void setConserveTask_peopleid(int conserveTask_peopleid) {
-        this.conserveTask_peopleid = conserveTask_peopleid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public List<Integer> getConserveTask_plantid() {
-        return conserveTask_plantid;
+    public List<Plant> getPlant() {
+        return plant;
     }
 
-    public void setConserveTask_plantid(List<Integer> conserveTask_plantid) {
-        this.conserveTask_plantid = conserveTask_plantid;
+    public void setPlant(List<Plant> plant) {
+        this.plant = plant;
     }
 
-    public int getConserveTask_placeid() {
-        return conserveTask_placeid;
+    public String getConserveTaskPlace() {
+        return conserveTaskPlace;
     }
 
-    public void setConserveTask_placeid(int conserveTask_placeid) {
-        this.conserveTask_placeid = conserveTask_placeid;
+    public void setConserveTaskPlace(String conserveTaskPlace) {
+        this.conserveTaskPlace = conserveTaskPlace;
     }
 
-    public Date getConserveTask_requiretime() {
-        return conserveTask_requiretime;
+    public Date getConserveTaskRequiretime() {
+        return conserveTaskRequiretime;
     }
 
-    public void setConserveTask_requiretime(Date conserveTask_requiretime) {
-        this.conserveTask_requiretime = conserveTask_requiretime;
+    public void setConserveTaskRequiretime(Date conserveTaskRequiretime) {
+        this.conserveTaskRequiretime = conserveTaskRequiretime;
     }
 
-    public Date getConserveTask_completetime() {
-        return conserveTask_completetime;
+    public Date getConserveTaskCompletetime() {
+        return conserveTaskCompletetime;
     }
 
-    public void setConserveTask_completetime(Date conserveTask_completetime) {
-        this.conserveTask_completetime = conserveTask_completetime;
+    public void setConserveTaskCompletetime(Date conserveTaskCompletetime) {
+        this.conserveTaskCompletetime = conserveTaskCompletetime;
     }
 
-    public Date getConserveTask_createtime() {
-        return conserveTask_createtime;
+    public Date getConserveTaskCreatetime() {
+        return conserveTaskCreatetime;
     }
 
-    public void setConserveTask_createtime(Date conserveTask_createtime) {
-        this.conserveTask_createtime = conserveTask_createtime;
+    public void setConserveTaskCreatetime(Date conserveTaskCreatetime) {
+        this.conserveTaskCreatetime = conserveTaskCreatetime;
     }
 
-    public Date getConserveTask_updatetime() {
-        return conserveTask_updatetime;
+    public Date getConserveTaskUpdatetime() {
+        return conserveTaskUpdatetime;
     }
 
-    public void setConserveTask_updatetime(Date conserveTask_updatetime) {
-        this.conserveTask_updatetime = conserveTask_updatetime;
+    public void setConserveTaskUpdatetime(Date conserveTaskUpdatetime) {
+        this.conserveTaskUpdatetime = conserveTaskUpdatetime;
     }
 
     @Override
     public String toString() {
-        return "conserve_task{" +
-                "conserveTask_id=" + conserveTask_id +
-                ", conserveTask_name='" + conserveTask_name + '\'' +
-                ", conserveTask_describe='" + conserveTask_describe + '\'' +
-                ", conserveTask_peopleid=" + conserveTask_peopleid +
-                ", conserveTask_plantid=" + conserveTask_plantid +
-                ", conserveTask_placeid=" + conserveTask_placeid +
-                ", conserveTask_requiretime=" + conserveTask_requiretime +
-                ", conserveTask_completetime=" + conserveTask_completetime +
-                ", conserveTask_createtime=" + conserveTask_createtime +
-                ", conserveTask_updatetime=" + conserveTask_updatetime +
+        return "ConserveTask{" +
+                "conserveTaskId=" + conserveTaskId +
+                ", conserveTaskName='" + conserveTaskName + '\'' +
+                ", conserveTaskDescribe='" + conserveTaskDescribe + '\'' +
+                ", user=" + user +
+                ", plant=" + plant +
+                ", conserveTaskPlace='" + conserveTaskPlace + '\'' +
+                ", conserveTaskRequiretime=" + conserveTaskRequiretime +
+                ", conserveTaskCompletetime=" + conserveTaskCompletetime +
+                ", conserveTaskCreatetime=" + conserveTaskCreatetime +
+                ", conserveTaskUpdatetime=" + conserveTaskUpdatetime +
                 '}';
     }
 }
