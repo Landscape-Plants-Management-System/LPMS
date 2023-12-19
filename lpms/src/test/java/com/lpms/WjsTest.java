@@ -1,6 +1,8 @@
 package com.lpms;
 
 import com.lpms.dao.*;
+import com.lpms.pojo.User;
+import com.lpms.pojo.conserveTask.ConserveTask;
 import com.lpms.pojo.monitor.MonitoringStatistics;
 import com.lpms.pojo.plant.PlantInfo;
 import com.lpms.utils.SqlSessionUtils;
@@ -8,6 +10,7 @@ import com.lpms.utils.StringToDate;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 public class WjsTest {
@@ -122,7 +125,24 @@ public class WjsTest {
         System.out.println(conserveTaskDao.getConserveTaskById(2));
         //根据名称查找养护任务
         System.out.println(conserveTaskDao.getConserveTaskByName("修剪花草"));
-        //增删改
+        //增
+        ConserveTask conserveTask =new ConserveTask();
+        conserveTask.setConserveTaskName("维护树种");
+        conserveTask.setConserveTaskDescribe("进行病虫害防治");
+        conserveTask.setConserveTaskPlace("天津");
+        Date date=new Date();
+        conserveTask.setConserveTaskCreatetime(date);
+        conserveTask.setConserveTaskRequiretime(date);
+        conserveTask.setConserveTaskUpdatetime(date);
+        User user=new User();
+        user.setUserId(2);
+        conserveTask.setUser(user);
+        conserveTaskDao.insertConserveTask(conserveTask);
+        //改
+        conserveTask.setConserveTaskCompletetime(date);
+        conserveTaskDao.updateConserveTask(conserveTask);
+        //删
+        conserveTaskDao.deleteConserveTask(3);
     }
 
     @Test
