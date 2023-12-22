@@ -14,6 +14,7 @@ public class MonitoringPlantDetailInfo {
     private String speciesName;
     private String genusName;
     private String familyName;
+    private boolean monIsNormal;
 
     @Override
     public String toString() {
@@ -29,6 +30,7 @@ public class MonitoringPlantDetailInfo {
                 ", speciesName='" + speciesName + '\'' +
                 ", genusName='" + genusName + '\'' +
                 ", familyName='" + familyName + '\'' +
+                ", monIsNormal=" + monIsNormal +
                 '}';
     }
 
@@ -118,5 +120,13 @@ public class MonitoringPlantDetailInfo {
 
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
+    }
+
+    public boolean isMonIsNormal() {
+        return monIsNormal;
+    }
+
+    public void setMonIsNormal(boolean monIsNormal) {
+        this.monIsNormal = monIsNormal;
     }
 }

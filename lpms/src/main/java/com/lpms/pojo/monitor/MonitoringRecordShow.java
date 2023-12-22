@@ -18,6 +18,7 @@ public class MonitoringRecordShow {
     private String location;
     private Integer devId;
     private String devName;
+    private boolean monIsNormal;
 
     @Override
     public String toString() {
@@ -36,6 +37,7 @@ public class MonitoringRecordShow {
                 ", location='" + location + '\'' +
                 ", devId=" + devId +
                 ", devName='" + devName + '\'' +
+                ", monIsNormal=" + monIsNormal +
                 '}';
     }
 
@@ -149,5 +151,13 @@ public class MonitoringRecordShow {
 
     public void setDevName(String devName) {
         this.devName = devName;
+    }
+
+    public boolean isMonIsNormal() {
+        return monIsNormal;
+    }
+
+    public void setMonIsNormal(boolean monIsNormal) {
+        this.monIsNormal = monIsNormal;
     }
 }

@@ -12,4 +12,9 @@
         SELECT * FROM user WHERE user_name=#{userName}
     </select>
 
+<!--    查询监测人员User getMonUserById(int monUserId);-->
+    <select id="getMonUserById" resultType="com.lpms.pojo.User">
+        SELECT * FROM user WHERE user_id = #{monUserId} and role_id=3
+    </select>
+
 </mapper>

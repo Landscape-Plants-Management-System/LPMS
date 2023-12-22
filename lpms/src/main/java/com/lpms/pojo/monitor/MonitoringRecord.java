@@ -12,11 +12,12 @@ public class MonitoringRecord {
     private Float monFruitGrowth;
     private Float monCanopyTemperature;
     private Float monLeafTemperature;
+    private boolean monIsNormal;
 
     public MonitoringRecord() {
     }
 
-    public MonitoringRecord(Integer monId, Date monDate, Integer monPlantId, Integer userId, Integer devId, Float monStemGrowth, Float monFruitGrowth, Float monCanopyTemperature, Float monLeafTemperature) {
+    public MonitoringRecord(Integer monId, Date monDate, Integer monPlantId, Integer userId, Integer devId, Float monStemGrowth, Float monFruitGrowth, Float monCanopyTemperature, Float monLeafTemperature, boolean monIsNormal) {
         this.monId = monId;
         this.monDate = monDate;
         this.monPlantId = monPlantId;
@@ -26,6 +27,7 @@ public class MonitoringRecord {
         this.monFruitGrowth = monFruitGrowth;
         this.monCanopyTemperature = monCanopyTemperature;
         this.monLeafTemperature = monLeafTemperature;
+        this.monIsNormal = monIsNormal;
     }
 
     @Override
@@ -40,6 +42,7 @@ public class MonitoringRecord {
                 ", monFruitGrowth=" + monFruitGrowth +
                 ", monCanopyTemperature=" + monCanopyTemperature +
                 ", monLeafTemperature=" + monLeafTemperature +
+                ", monIsNormal=" + monIsNormal +
                 '}';
     }
 
@@ -113,5 +116,13 @@ public class MonitoringRecord {
 
     public void setMonLeafTemperature(Float monLeafTemperature) {
         this.monLeafTemperature = monLeafTemperature;
+    }
+
+    public boolean isMonIsNormal() {
+        return monIsNormal;
+    }
+
+    public void setMonIsNormal(boolean monIsNormal) {
+        this.monIsNormal = monIsNormal;
     }
 }

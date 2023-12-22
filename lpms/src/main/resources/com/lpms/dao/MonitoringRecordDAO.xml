@@ -5,6 +5,11 @@
 <mapper namespace="com.lpms.dao.MonitoringRecordDAO">
 <!--    查询视图的内容-->
 
+<!--    MonitoringRecordShow getMonitoringRecordById();-->
+    <select id="getMonitoringRecordById" resultType="com.lpms.pojo.monitor.MonitoringRecordShow">
+        select * from mon_plant_user_device_v where mon_id=#{monId}
+    </select>
+
 <!--    List<MonitoringRecordShow>listMonitoringRecord();-->
     <select id="listMonitoringRecord" resultType="com.lpms.pojo.monitor.MonitoringRecordShow">
         select * from mon_plant_user_device_v
@@ -18,6 +23,11 @@
 <!--    List<MonitoringPlantDetailInfo>listMonitoringPlantDetailInfo();-->
     <select id="listMonitoringPlantDetailInfo"  resultType="com.lpms.pojo.monitor.MonitoringPlantDetailInfo">
         select *from mon_plant_species_genus_family_v;
+    </select>
+
+<!--    List<MonitoringRecordShow>listNotNormalMonitoringRecordShow();-->
+    <select id="listNotNormalMonitoringRecordShow" resultType="com.lpms.pojo.monitor.MonitoringRecordShow">
+        select * from mon_plant_user_device_v where mon_is_normal=0
     </select>
 
 <!--    MonitoringStatistics getMonitoringStatistics();-->
@@ -132,9 +142,9 @@
     <!-- 插入监测记录 -->
     <insert id="insertMonitoringRecord" parameterType="com.lpms.pojo.monitor.MonitoringRecord">
         INSERT INTO monitoring_record
-        (mon_date, mon_plant_id, user_id, dev_id, mon_stem_growth, mon_fruit_growth, mon_canopy_temperature, mon_leaf_temperature)
+        (mon_date, mon_plant_id, user_id, dev_id, mon_stem_growth, mon_fruit_growth, mon_canopy_temperature, mon_leaf_temperature,mon_is_normal)
         VALUES
-            (#{monDate}, #{monPlantId}, #{userId}, #{devId}, #{monStemGrowth}, #{monFruitGrowth}, #{monCanopyTemperature}, #{monLeafTemperature})
+            (#{monDate}, #{monPlantId}, #{userId}, #{devId}, #{monStemGrowth}, #{monFruitGrowth}, #{monCanopyTemperature}, #{monLeafTemperature},#{monIsNormal})
     </insert>
 
     <!-- 删除监测记录 -->
@@ -147,7 +157,8 @@
         UPDATE monitoring_record
         SET mon_date = #{monDate}, mon_plant_id = #{monPlantId}, user_id = #{userId},
             dev_id = #{devId}, mon_stem_growth = #{monStemGrowth}, mon_fruit_growth = #{monFruitGrowth},
-            mon_canopy_temperature = #{monCanopyTemperature}, mon_leaf_temperature = #{monLeafTemperature}
+            mon_canopy_temperature = #{monCanopyTemperature}, mon_leaf_temperature = #{monLeafTemperature},
+            mon_is_normal=#{monIsNormal}
         WHERE mon_id = #{monId}
     </update>
 </mapper>

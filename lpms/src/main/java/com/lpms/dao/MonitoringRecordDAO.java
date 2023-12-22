@@ -7,12 +7,16 @@ import java.util.Date;
 import java.util.List;
 
 public interface MonitoringRecordDAO {
+    //根据monId显示普通查询记录
+    MonitoringRecordShow getMonitoringRecordById(@Param("monId")Integer monId);
     //显示普通查询记录
     List<MonitoringRecordShow>listMonitoringRecord();
     //显示植物地点详细信息
     List<MonitoringPlantAndPlaceShow>listMonitoringPlantAndPlaceShow();
     //查询植物详细信息及监测数据
     List<MonitoringPlantDetailInfo>listMonitoringPlantDetailInfo();
+    //查询数据异常的植物
+    List<MonitoringRecordShow>listNotNormalMonitoringRecordShow();
 
     //查询所有植物的4个数据的平均值，最大值，最小值查询
     MonitoringStatistics getMonitoringStatistics();
