@@ -14,6 +14,9 @@
     <select id="getFamilyByFamilyName" resultType="com.lpms.pojo.classification.Family">
         select * from family where family_name=#{family_name};
     </select>
+    <select id="getFamilyIdByFamilyName" resultType="java.lang.Integer">
+        SELECT family_id FROM family WHERE family_name=#{family_name}
+    </select>
 
     <!-- 属 -->
     <select id="listGenuses" resultType="com.lpms.pojo.classification.Genus">
@@ -25,6 +28,9 @@
     <select id="getGenusByGenusName" resultType="com.lpms.pojo.classification.Genus">
         select * from genus where genus_name=#{genus_name};
     </select>
+    <select id="getGenusIdByGenusName" resultType="java.lang.Integer">
+        SELECT genus_id FROM genus WHERE genus_name=#{genus_name}
+    </select>
 
     <!-- 种 -->
     <select id="listSpecies" resultType="com.lpms.pojo.classification.Species">
@@ -35,6 +41,9 @@
     </select>
     <select id="getSpeciesBySpeciesName" resultType="com.lpms.pojo.classification.Species">
         select * from species where species_name=#{species_name};
+    </select>
+    <select id="getSpeciesIdBySpeciesName" resultType="java.lang.Integer">
+        SELECT species_id FROM species WHERE species_name=#{species_name}
     </select>
 
     <!-- 分布区域 -->
@@ -72,29 +81,38 @@
 
     <!-- 插入 -->
     <insert id="insertFamily">
-        insert into family (family_id, family_name)
-        values (null, #{family_name})
+        insert into family (family_name)
+        values (#{familyName})
     </insert>
     <insert id="insertGenus">
-        insert into genus (genus_id, genus_name, family_id)
-        values (null, #{genus_name}, #{family_id})
+        insert into genus (genus_name, family_id)
+        values (#{genusName}, #{familyId})
     </insert>
     <insert id="insertSpecies">
-        insert into species (species_id, species_name, genus_id)
-        values (null, #{species_name}, #{genus_id})
+        insert into species (species_name,species_nickname,species_feature,species_cultivating,species_value,genus_id)
+        values (#{speciesName},#{speciesNickname},#{speciesFeature},#{speciesCultivating},#{speciesValue}, #{genusId})
     </insert>
     <insert id="insertDistribution">
-        insert into distribution (distribution_id, distribution_provincial)
-        values (null, #{distribution_provincial})
+        insert into distribution (distribution_provincial)
+        values (#{distributionName})
     </insert>
     <insert id="insertEnvironment">
-        insert into environment (environment_id, environment_name)
-        values (null, #{environment_name})
+        insert into environment (environment_name)
+        values (#{environmentName})
     </insert>
     <insert id="insertGrowth">
-        insert into growth (growth_id, growth_name)
-        values (null, #{growth_name})
+        insert into growth (growth_name)
+        values (#{growthName})
     </insert>
+    <insert id="insertSpeciesDistribution">
+        insert into species_distribution (species_id, distribution_id)
+        values (#{speciesId}, #{distributionId})
+    </insert>
+    <insert id="insertSpeciesEnvironment">
+        insert into species_environment (species_id, environment_id)
+        values (#{speciesId}, #{environmentId})
+    </insert>
+
 
     <!-- 删除 -->
     <delete id="deleteFamilyById">
@@ -144,8 +162,14 @@
     <delete id="deleteGrowthByName">
         delete from growth where growth_name=#{growth_name}
     </delete>
+    <delete id="deleteSpeciesDistribution">
+        delete from species_distribution where species_id=#{speciesId}
+    </delete>
+    <delete id="deleteSpeciesEnvironment">
+        delete from species_environment where species_id=#{speciesId}
+    </delete>
 
-    <!-- 更新 -->
+    <!-- 根据id更新 -->
     <update id="updateFamilyNameById">
         update family set family_name=#{family_name} where family_id=#{family_id}
     </update>
@@ -179,6 +203,27 @@
         update growth set growth_name=#{growth_name} where growth_id=#{growth_id}
     </update>
 
+    <!-- 根据名称更新 -->
+    <update id="updateFamilyNameByName" >
+        update family set family_name=#{newName} where family_name=#{oldName}
+    </update>
+    <update id="updateGenusNameByName">
+        update genus set genus_name=#{newName} where genus_name=#{oldName}
+    </update>
+    <update id="updateSpeciesNameByName">
+        update species set species_name=#{newName} where species_name=#{oldName}
+    </update>
+    <update id="updateDistributionNameByName">
+        update distribution set distribution_name=#{newName} where distribution_name=#{oldName}
+    </update>
+    <update id="updateEnvironmentNameByName">
+        update environment set environment_name=#{newName} where environment_name=#{oldName}
+    </update>
+    <update id="updateGrowthNameByName">
+        update growth set growth_name=#{newName} where growth_name=#{oldName}
+    </update>
+
+
     <!-- 查看简易的植物分类信息，也可用于生长环境的模糊查询 -->
     <select id="getSimpleClassificationInfo" resultType="com.lpms.pojo.classification.Simple_Classification_Info">
         SELECT family_name,genus_name,species_name,environment_name
@@ -210,6 +255,7 @@
         WHERE genus_name LIKE CONCAT('%', #{keyword}, '%')
         ORDER BY genus_name,species_name
     </select>
+
 
 
 </mapper>

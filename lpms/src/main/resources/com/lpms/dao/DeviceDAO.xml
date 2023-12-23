@@ -43,9 +43,12 @@
         values (null,#{devName},#{devCanMonitorStemGrowth},#{devCanMonitorFruitGrowth},
                 #{devCanMonitorCanopyTemperature},#{devCanMonitorLeafTemperature})
     </insert>
+    <insert id="insertDevice1">
+        insert into device (dev_name, dev_can_monitor_stem_growth, dev_can_monitor_canopy_temperature,dev_can_monitor_leaf_temperature)
+        values (#{devName},#{devCanMonitorStemGrowth},#{devCanMonitorCanopyTemperature},#{devCanMonitorLeafTemperature})
+    </insert>
 
-
-<!--    void deleteDeviceById(@Param("devId")Integer devId);-->
+    <!--    void deleteDeviceById(@Param("devId")Integer devId);-->
     <delete id="deleteDeviceById">
         delete from device where dev_id=#{devId}
     </delete>

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class ClassificationTest {
 
@@ -30,11 +31,28 @@ public class ClassificationTest {
         //测试查询所有科
         System.out.println(classificationDao.listFamilies());
 
-        //测试根据科ID查询科
-        //System.out.println(classificationDao.getFamilyByFamilyId(3));
-
         //测试根据科名查询科
         System.out.println(classificationDao.getFamilyByFamilyName("豆科"));
+
+        //测试插入
+        String name1 = "插入测试";
+        String name2 = "test";
+        System.out.print("请输入需要添加的科名1:"+name1+"\n");
+        classificationDao.insertFamily(name1);
+        System.out.print("请输入需要添加的科名2:"+name2+"\n");
+        classificationDao.insertFamily(name2);
+
+        //测试删除
+        System.out.print("请输入需要删除的科名:");
+        String name3 = "插入测试";
+        classificationDao.deleteFamilyByName(name3);
+
+        //测试更新
+        String oldName = "插入测试";
+        System.out.print("请输入需要更新前的科名:"+oldName+"\n");
+        String newName = "更新测试";
+        System.out.print("请输入需要更新后的科名:"+newName+"\n");
+        classificationDao.updateFamilyNameByName(oldName,newName);
 
     }
 
@@ -55,6 +73,23 @@ public class ClassificationTest {
         //测试根据属名查询属
         System.out.println(classificationDao.getGenusByGenusName("柚属"));
 
+        //测试插入
+        String genusName = "插入测试";
+        System.out.print("请输入需要添加的名字:"+genusName+"，所属的科名：陵齿蕨科 \n");
+        Integer familyId = classificationDao.getFamilyIdByFamilyName("陵齿蕨科");
+        classificationDao.insertGenus(genusName,familyId);
+
+//        //测试删除
+//        System.out.print("请输入需要删除的名字:");
+//        String name3 = "插入测试";
+//        classificationDao.deleteGenusByName(name3);
+
+        //测试更新
+        String oldName = "插入测试";
+        System.out.print("请输入需要更新前的名字:"+oldName+"\n");
+        String newName = "更新测试";
+        System.out.print("请输入需要更新后的名字:"+newName+"\n");
+        classificationDao.updateGenusNameByName(oldName,newName);
     }
 
     /**
@@ -125,11 +160,10 @@ public class ClassificationTest {
         //测试查询所有生长阶段
         System.out.println(classificationDao.listGrowth());
 
-        //测试根据生长阶段ID查询生长阶段
-        //System.out.println(classificationDao.getGrowthByGrowthId(1));
-
         //测试根据生长阶段名查询生长阶段
         System.out.println(classificationDao.getGrowthByGrowthName("幼苗期"));
+
+
 
     }
 

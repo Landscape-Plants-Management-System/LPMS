@@ -29,6 +29,10 @@
         INSERT INTO method (method_name, drug_name, drug_dosage, drug_time)
         VALUES (#{methodName}, #{drugName}, #{drugDosage}, #{drugTime})
     </insert>
+    <insert id="insertMethod1">
+        INSERT INTO method (method_name, drug_name, drug_dosage, drug_time)
+        VALUES (#{methodName}, #{drugName}, #{drugDosage}, #{drugTime})
+    </insert>
 
     <!-- 修改现有Method的更新语句 -->
     <update id="updateMethod" parameterType="com.lpms.pojo.disease.Method" useGeneratedKeys="true" keyProperty="method_id">

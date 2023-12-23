@@ -13,16 +13,19 @@ public interface ClassificationDao {
     //科
     List<Family> listFamilies();
     //Family getFamilyByFamilyId(@Param("family_id")Integer family_id);
+    Integer getFamilyIdByFamilyName(@Param("family_name")String family_name);
     Family getFamilyByFamilyName(@Param("family_name")String family_name);
 
     //属
     List<Genus> listGenuses();
     //Genus getGenusByGenusId(@Param("genus_id")Integer genus_id);
+    Integer getGenusIdByGenusName(@Param("genus_name")String genus_name);
     Genus getGenusByGenusName(@Param("genus_name")String genus_name);
 
     //种
     List<Species> listSpecies();
     //Species getSpeciesBySpeciesId(@Param("species_id")Integer species_id);
+    Integer getSpeciesIdBySpeciesName(@Param("species_name")String species_name);
     Species getSpeciesBySpeciesName(@Param("species_name")String species_name);
 
     //分布区域
@@ -43,12 +46,17 @@ public interface ClassificationDao {
     /**
      * 增加，实现对园林植物分类信息的增加
      */
-    void insertFamily(Family family);
-    void insertGenus(Genus genus);
-    void insertSpecies(Species species);
-    void insertDistribution(Distribution distribution);
-    void insertEnvironment(Environment environment);
-    void insertGrowth(Growth growth);
+    void insertFamily(String familyName);
+    void insertGenus(@Param("genusName")String genusName,@Param("familyId")Integer familyId);
+    void insertSpecies(@Param("speciesName")String speciesName,@Param("speciesNickname")String speciesNickname,
+                       @Param("speciesFeature")String speciesFeature, @Param("speciesCultivating")String speciesCultivating,
+                       @Param("speciesValue")String speciesValue,@Param("genusId")Integer genusId);
+    void insertDistribution(@Param("distributionName")String distributionName);
+    void insertEnvironment(@Param("environmentName")String  environmentName);
+    void insertGrowth(@Param("growthName")String growthName);
+    //插入外键表
+    void insertSpeciesDistribution(@Param("speciesId")Integer speciesId,@Param("distributionId")Integer distributionId);
+    void insertSpeciesEnvironment(@Param("speciesId")Integer speciesId,@Param("environmentId")Integer environmentId);
 
     /**
      * 删除，实现对园林植物分类信息的删除
@@ -77,15 +85,31 @@ public interface ClassificationDao {
     //void deleteGrowthById(@Param("growth_id")Integer growth_id);
     void deleteGrowthByName(@Param("growth_name")String growth_name);
 
+    //删除外键表内容
+    void deleteSpeciesDistribution(@Param("speciesId")Integer speciesId);
+    void deleteSpeciesEnvironment(@Param("speciesId")Integer speciesId);
+
+
     /**
      * 修改，实现对园林植物分类信息的修改
      */
     void updateFamilyNameById(Family family);
+    void updateFamilyNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
+
     void updateGenusNameById(Genus genus);
+    void updateGenusNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
+
     void updateSpeciesById(Species species);
+    void updateSpeciesNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
+
     void updateDistributionById(Distribution distribution);
+    void updateDistributionNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
+
     void updateEnvironmentNameById(Environment environment);
+    void updateEnvironmentNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
+
     void updateGrowthById(Growth growth);
+    void updateGrowthNameByName(@Param("oldName")String oldName,@Param("newName")String newName);
 
     /**
      * 复杂查询，借助视图，实现对园林植物分类信息的查询

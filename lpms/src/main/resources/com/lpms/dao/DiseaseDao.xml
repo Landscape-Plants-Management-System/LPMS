@@ -28,6 +28,10 @@
         INSERT INTO disease (disease_name, method_id)
         VALUES (#{diseaseName}, #{method.methodId})
     </insert>
+    <insert id="insertDisease1">
+        INSERT INTO disease (disease_id,disease_name, method_id)
+        VALUES (#{diseaseId},#{diseaseName}, #{methodId})
+    </insert>
 
     <!-- 修改现有Disease的更新语句 -->
     <update id="updateDisease" parameterType="com.lpms.pojo.disease.Disease">

@@ -18,14 +18,16 @@ public interface UserDAO {
     /**
      * 增加
      */
-
+    void insertUser(@Param("userName")String userName, @Param("userPassword")String userPassword,
+                    @Param("userPhoneNum")String userPhoneNum, @Param("userAge")Integer userAge,
+                    @Param("userSex")String userSex, @Param("roleId")Integer roleId);
     /**
      * 修改
      */
-
+    void updateUser(User user);
 
     /**
      * 删除
      */
-
+    void deleteUserByName(@Param("userName")String userName);
 }

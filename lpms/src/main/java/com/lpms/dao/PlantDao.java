@@ -1,5 +1,6 @@
 package com.lpms.dao;
 
+import com.lpms.pojo.plant.Plant;
 import com.lpms.pojo.plant.PlantInfo;
 import com.lpms.pojo.plant.Plant_number;
 
@@ -32,7 +33,7 @@ public interface PlantDao {
      * 插入
      */
     //增添新植物
-    int insertPlant(String plant_name,int species_id,int place_id );
+    int insertPlant(Plant plant);
 
 
 

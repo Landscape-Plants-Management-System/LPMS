@@ -21,6 +21,10 @@ public interface DeviceDAO {
      * 插入
      */
     void insertDevice(Device device);
+    void insertDevice1(@Param("devName")String devName,@Param("devCanMonitorStemGrowth")String devCanMonitorStemGrowth,
+                       @Param("devCanMonitorFruitGrowth")String devCanMonitorFruitGrowth,
+                       @Param("devCanMonitorCanopyTemperature")String devCanMonitorCanopyTemperature,
+                       @Param("devCanMonitorLeafTemperature")String devCanMonitorLeafTemperature);
 
     /**
      * 删除

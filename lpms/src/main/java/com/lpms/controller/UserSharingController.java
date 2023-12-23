@@ -39,7 +39,6 @@ public class UserSharingController {
 //        }
 
     }
-
     private void searchPlantBySpecies(){
         //查询种
         System.out.println("平台所有种信息展示");
@@ -88,7 +87,6 @@ public class UserSharingController {
         Family familyByFamilyName = DaoImpl.classificationDao.getFamilyByFamilyName(keyword);
         System.out.println(familyByFamilyName);
     }
-
     private void plantCount(){
         //统计平台每种植物的数量
         System.out.println("每种植物的数量");
@@ -97,7 +95,6 @@ public class UserSharingController {
             System.out.println(plantNumber);
         }
     }
-
     private void getSimpleClassificationInfo(){
         //查看简易的植物分类信息，也可用于生长环境等所有字段的模糊查询
         System.out.println("请输入查询关键字（可用于生长环境等所有字段的模糊查询）");
@@ -124,17 +121,16 @@ public class UserSharingController {
             System.out.println(subordinatePlant);
         }
     }
-
     private void findSubordinatePlantsGenus(){
         //根据指定属性查找下属的植物
         System.out.println("请输入属名");
         Scanner scanner=new Scanner(System.in);
         String keyword=scanner.nextLine();
-        for (Family_Genus_Species_Info subordinatePlant : DaoImpl.classificationDao.findSubordinatePlantsGenus(keyword)) {
-            System.out.println(subordinatePlant);
+        List<Family_Genus_Species_Info> result = DaoImpl.classificationDao.findSubordinatePlantsGenus(keyword);
+        for (Family_Genus_Species_Info info : result) {
+            System.out.println(info); // 在控制台输出每一个结果
         }
     }
-
     public void plantBasicQuery(){
         System.out.println("请选择查询项目：1.平台所有植物信息 2.平台所有种信息 3.平台所有属信息 4.平台所有科信息 5.每种植物的数量");
         System.out.println("请选择查询项目：6.查询简易植物分类信息 7.查看完整的植物分类信息 8.根据科名查找下属的植物 9.根据属名查找下属的植物");

@@ -1,6 +1,7 @@
 package com.lpms.dao;
 
 import com.lpms.pojo.disease.Method;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public interface MethodDao {
     Method getMethodByName(String methodName);
     //插入防治方法表
     int insertMethod(Method method);
+    int insertMethod1(@Param("methodName")String methodName,@Param("drugName")String drugName,
+                      @Param("drugDosage")double drugDosage, @Param("drugTime")double drugTime);
     //更新防治方法表
     int updateMethod(Method method);
     //删除防治方法表
