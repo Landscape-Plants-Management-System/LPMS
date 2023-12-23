@@ -48,13 +48,18 @@
     </select>
 
     <!-- 添加新的ConserveTask的插入语句 -->
-    <insert id="insertConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask">
+    <insert id="insertConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask" useGeneratedKeys="true" keyProperty="conserveTask_id">
         INSERT INTO conserve_task (conserveTask_name, conserveTask_describe, conserveTask_peopleid, conserveTask_place,
                                    conserveTask_requiretime, conserveTask_completetime,
                                    conserveTask_createtime, conserveTask_updatetime)
         VALUES (#{conserveTaskName}, #{conserveTaskDescribe}, #{user.userId}, #{conserveTaskPlace},
                 #{conserveTaskRequiretime}, #{conserveTaskCompletetime},
                 #{conserveTaskCreatetime}, #{conserveTaskUpdatetime})
+    </insert>
+
+    <insert id="insertPlantTaskRelation">
+        INSERT INTO plant_task (plant_id, conserveTask_id)
+        VALUES (#{plantId}, #{conserveTaskId})
     </insert>
 
     <!-- 修改现有ConserveTask的更新语句 -->

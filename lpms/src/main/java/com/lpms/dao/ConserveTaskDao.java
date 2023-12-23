@@ -13,7 +13,8 @@ public interface ConserveTaskDao {
     //按养护任务名查询
     ConserveTask getConserveTaskByName(String conserveTaskName);
     //插入养护任务表
-    void insertConserveTask(ConserveTask conserveTask);
+    int insertConserveTask(ConserveTask conserveTask);
+    void insertPlantTaskRelation(int plantId, int conserveTaskId);
     //修改养护任务表
     void updateConserveTask(ConserveTask conserveTask);
     //删除养护任务表

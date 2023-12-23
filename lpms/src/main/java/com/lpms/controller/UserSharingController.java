@@ -338,8 +338,37 @@ public class UserSharingController {
         System.out.println("请输入执行人员编号");
         user.setUserId(scanner.nextInt());
         conserveTask.setUser(user);
-        DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+        int conserveTaskid=DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+        System.out.println("请输入养护对象编号");
+        int plantId=scanner.nextInt();
+        DaoImpl.conserveTaskDao.insertPlantTaskRelation(plantId,conserveTaskid);
     }
+
+    public void InsertUnnormalConserveTask()
+    {
+        List<Integer> plantsId=DaoImpl.monitoringRecordDAO.listNotNormalMonitoringPlantid();
+        for (int plantId: plantsId) {
+            ConserveTask conserveTask =new ConserveTask();
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("请输入养护任务名称");
+            conserveTask.setConserveTaskName(scanner.nextLine());
+            System.out.println("请输入养护任务描述");
+            conserveTask.setConserveTaskDescribe(scanner.nextLine());
+            System.out.println("请输入养护任务地址");
+            conserveTask.setConserveTaskPlace(scanner.nextLine());
+            Date date=new Date();
+            conserveTask.setConserveTaskCreatetime(date);
+            conserveTask.setConserveTaskRequiretime(date);
+            conserveTask.setConserveTaskUpdatetime(date);
+            User user=new User();
+            System.out.println("请输入执行人员编号");
+            user.setUserId(scanner.nextInt());
+            conserveTask.setUser(user);
+            int conserveTaskid=DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+            DaoImpl.conserveTaskDao.insertPlantTaskRelation(plantId,conserveTaskid);
+        }
+    }
+
     public void DeleteConserveTask()
     {
         Scanner scanner=new Scanner(System.in);
@@ -364,7 +393,7 @@ public class UserSharingController {
         }
     }
 
-    public void UpdateConserveTask(){
+    public void UpdateConserveTask(){//执行人员更新完成任务
         System.out.println("请输入需要更新的任务编号");
         Scanner scanner=new Scanner(System.in);
         int id=scanner.nextInt();
@@ -375,5 +404,65 @@ public class UserSharingController {
         DaoImpl.conserveTaskDao.updateConserveTask(conserveTask);
         System.out.println("养护任务执行完成，记录已更新！");
     }
+
+    public void MainUpdateConserveTask(){//上级主管部门更新任务要求
+        System.out.println("请输入需要更新的任务编号");
+        Scanner scanner=new Scanner(System.in);
+        int id=scanner.nextInt();
+        Date time = new Date();
+        ConserveTask conserveTask = DaoImpl.conserveTaskDao.getConserveTaskById(id);
+        System.out.println("请选择需要更新的任务属性：1.任务名称 2.任务描述3.执行地点");
+        int chooseFunction=scanner.nextInt();
+        switch (chooseFunction){
+            case 1:
+                conserveTask.setConserveTaskName(scanner.nextLine());
+                break;
+            case 2:
+                conserveTask.setConserveTaskDescribe(scanner.nextLine());
+                break;
+            case 3:
+                conserveTask.setConserveTaskPlace(scanner.nextLine());
+                break;
+            default:
+                System.out.println("输入错误，请重新输入");
+                break;
+        }
+        conserveTask.setConserveTaskUpdatetime( time );
+        DaoImpl.conserveTaskDao.updateConserveTask(conserveTask);
+        System.out.println("养护任务执行完成，记录已更新！");
+    }
+
+    public void UpdateDisease(){//管理员更新病虫害
+        System.out.println("请输入需要更新的病虫害编号");
+        Scanner scanner=new Scanner(System.in);
+        int id=scanner.nextInt();
+        Date time = new Date();
+        Disease disease = DaoImpl.diseaseDao.getDiseaseById(id);
+        System.out.println("请选择需要更新的病虫害属性：1.病虫害名称 2.防治方法");
+        int chooseFunction=scanner.nextInt();
+        switch (chooseFunction){
+            case 1:
+                disease.setDiseaseName(scanner.nextLine());
+                break;
+            case 2:
+                Method method=disease.getMethod();
+                System.out.println("请输入防治方法名称");
+                method.setMethodName(scanner.nextLine());
+                System.out.println("请输入药剂名称");
+                method.setDrugName(scanner.nextLine());
+                System.out.println("请输入药剂用量");
+                method.setDrugDosage(scanner.nextDouble());
+                System.out.println("请输入作用期限");
+                method.setDrugTime(scanner.nextDouble());
+                DaoImpl.methodDao.updateMethod(method);
+                break;
+            default:
+                System.out.println("输入错误，请重新输入");
+                break;
+        }
+        DaoImpl.diseaseDao.updateDisease(disease);
+        System.out.println("病虫害记录更新完成！");
+    }
+
 
 }

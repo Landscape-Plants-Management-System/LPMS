@@ -14,7 +14,7 @@ public interface MethodDao {
     //插入防治方法表
     int insertMethod(Method method);
     //更新防治方法表
-    void updateMethod(Method method);
+    int updateMethod(Method method);
     //删除防治方法表
     void deleteMethod(int methodId);
 }

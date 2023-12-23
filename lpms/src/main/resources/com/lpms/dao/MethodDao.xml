@@ -31,7 +31,7 @@
     </insert>
 
     <!-- 修改现有Method的更新语句 -->
-    <update id="updateMethod" parameterType="com.lpms.pojo.disease.Method">
+    <update id="updateMethod" parameterType="com.lpms.pojo.disease.Method" useGeneratedKeys="true" keyProperty="method_id">
         UPDATE method SET
                           method_name = #{methodName},
                           drug_name = #{drugName},
