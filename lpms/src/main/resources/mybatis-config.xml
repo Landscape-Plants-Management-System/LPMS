@@ -39,6 +39,7 @@
         <mapper resource="com/lpms/dao/ConserveTaskDao.xml"/>
         <mapper resource="com/lpms/dao/DiseaseDao.xml"/>
         <mapper resource="com/lpms/dao/MethodDao.xml"/>
+        <mapper resource="com/lpms/dao/PlantTaskDao.xml"/>
     </mappers>
 
 

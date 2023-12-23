@@ -4,7 +4,7 @@
 <mapper namespace="com.lpms.dao.ConserveTaskDao">
 
     <resultMap id="ConserveTaskResultMap" type="com.lpms.pojo.conserveTask.ConserveTask">
-        <id property="conserveTaskId" column="conserveTask_id" />
+        <id property="conserveTask_id" column="conserveTask_id" />
         <result property="conserveTaskName" column="conserveTask_name" />
         <result property="conserveTaskDescribe" column="conserveTask_describe" />
         <result property="conserveTaskPlace" column="conserveTask_place" />
@@ -26,7 +26,7 @@
 
     <!-- 通过ID获取ConserveTask的查询语句 -->
     <select id="getConserveTaskById" resultMap="ConserveTaskResultMap">
-        SELECT * FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
+        SELECT * FROM conserve_task WHERE conserveTask_id = #{conserveTask_id}
     </select>
 
     <!-- 通过用户名获取相关的ConserveTask的查询语句 -->
@@ -57,10 +57,6 @@
                 #{conserveTaskCreatetime}, #{conserveTaskUpdatetime})
     </insert>
 
-    <insert id="insertPlantTaskRelation">
-        INSERT INTO plant_task (plant_id, conserveTask_id)
-        VALUES (#{plantId}, #{conserveTaskId})
-    </insert>
 
     <!-- 修改现有ConserveTask的更新语句 -->
     <update id="updateConserveTask" parameterType="com.lpms.pojo.conserveTask.ConserveTask">
@@ -72,12 +68,11 @@
                                  conserveTask_requiretime = #{conserveTaskRequiretime},
                                  conserveTask_completetime = #{conserveTaskCompletetime},
                                  conserveTask_updatetime = #{conserveTaskUpdatetime}
-        WHERE conserveTask_id = #{conserveTaskId}
+        WHERE conserveTask_id = #{conserveTask_id}
     </update>
-
     <!-- 通过ID删除ConserveTask的删除语句 -->
     <delete id="deleteConserveTask" parameterType="int">
-        DELETE FROM conserve_task WHERE conserveTask_id = #{conserveTaskId}
+        DELETE FROM conserve_task WHERE conserveTask_id = #{conserveTask_id}
     </delete>
 
 </mapper>

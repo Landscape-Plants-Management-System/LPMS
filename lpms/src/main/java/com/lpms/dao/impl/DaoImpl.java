@@ -14,6 +14,7 @@ public class DaoImpl {
     public static ConserveTaskDao conserveTaskDao;
     public static MethodDao methodDao;
     public static DiseaseDao diseaseDao;
+    public static PlantTaskDao plantTaskDao;
     public static void initDAO() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         userDAO = sqlSession.getMapper(UserDAO.class);
@@ -25,5 +26,6 @@ public class DaoImpl {
         conserveTaskDao=sqlSession.getMapper(ConserveTaskDao.class);
         methodDao=sqlSession.getMapper(MethodDao.class);
         diseaseDao=sqlSession.getMapper(DiseaseDao.class);
+        plantTaskDao=sqlSession.getMapper(PlantTaskDao.class);
     }
 }

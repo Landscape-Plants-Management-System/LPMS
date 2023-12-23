@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lpms.dao.PlantTaskDao">
+
+    <insert id="insertPlantTask" parameterType="com.lpms.pojo.conserveTask.PlantTask">
+        INSERT INTO plant_task (plant_id, conserveTask_id) VALUES (#{plantId}, #{conserveTask_id})
+    </insert>
+    <delete id="deletePlantTask" parameterType="int">
+        DELETE FROM plant_task WHERE conserveTask_id = #{conserveTask_id}
+    </delete>
+</mapper>

@@ -14,7 +14,6 @@ public interface ConserveTaskDao {
     ConserveTask getConserveTaskByName(String conserveTaskName);
     //插入养护任务表
     int insertConserveTask(ConserveTask conserveTask);
-    void insertPlantTaskRelation(int plantId, int conserveTaskId);
     //修改养护任务表
     void updateConserveTask(ConserveTask conserveTask);
     //删除养护任务表

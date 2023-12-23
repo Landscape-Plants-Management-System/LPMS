@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ConserveTask {
-    private int conserveTaskId;
+    private int conserveTask_id;
     private String conserveTaskName;
     private String conserveTaskDescribe;
     private User user;
@@ -18,12 +18,12 @@ public class ConserveTask {
     private Date conserveTaskCreatetime;
     private Date conserveTaskUpdatetime;
 
-    public int getConserveTaskId() {
-        return conserveTaskId;
+    public int getConserveTask_id() {
+        return conserveTask_id;
     }
 
-    public void setConserveTaskId(int conserveTaskId) {
-        this.conserveTaskId = conserveTaskId;
+    public void setConserveTask_id(int conserveTask_id) {
+        this.conserveTask_id = conserveTask_id;
     }
 
     public String getConserveTaskName() {
@@ -101,7 +101,7 @@ public class ConserveTask {
     @Override
     public String toString() {
         return "ConserveTask{" +
-                "conserveTaskId=" + conserveTaskId +
+                "conserveTaskId=" + conserveTask_id +
                 ", conserveTaskName='" + conserveTaskName + '\'' +
                 ", conserveTaskDescribe='" + conserveTaskDescribe + '\'' +
                 ", user=" + user +

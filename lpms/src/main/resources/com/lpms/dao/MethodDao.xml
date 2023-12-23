@@ -4,7 +4,7 @@
 <mapper namespace="com.lpms.dao.MethodDao">
 
     <resultMap id="MethodResultMap" type="com.lpms.pojo.disease.Method">
-        <id property="methodId" column="method_id" />
+        <id property="method_id" column="method_id" />
         <result property="methodName" column="method_name" />
         <result property="drugName" column="drug_name" />
         <result property="drugDosage" column="drug_dosage" />
@@ -13,7 +13,7 @@
 
     <!-- 通过ID获取Method的查询语句 -->
     <select id="getMethodById" resultMap="MethodResultMap">
-        SELECT * FROM method WHERE method_id = #{methodId}
+        SELECT * FROM method WHERE method_id = #{method_id}
     </select>
     <!-- 查询所有Method的查询语句 -->
     <select id="getAllMethods" resultMap="MethodResultMap">
@@ -41,12 +41,12 @@
                           drug_name = #{drugName},
                           drug_dosage = #{drugDosage},
                           drug_time = #{drugTime}
-        WHERE method_id = #{methodId}
+        WHERE method_id = #{method_id}
     </update>
 
     <!-- 通过ID删除Method的删除语句 -->
     <delete id="deleteMethod" parameterType="int">
-        DELETE FROM method WHERE method_id = #{methodId}
+        DELETE FROM method WHERE method_id = #{method_id}
     </delete>
 
 </mapper>

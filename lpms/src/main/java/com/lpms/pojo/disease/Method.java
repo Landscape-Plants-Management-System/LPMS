@@ -1,18 +1,18 @@
 package com.lpms.pojo.disease;
 
 public class Method {
-    private int methodId;
+    private int method_id;
     private String methodName;
     private String drugName;
     private double drugDosage;
     private double drugTime;
 
-    public int getMethodId() {
-        return methodId;
+    public int getMethod_id() {
+        return method_id;
     }
 
-    public void setMethodId(int methodId) {
-        this.methodId = methodId;
+    public void setMethod_id(int method_id) {
+        this.method_id = method_id;
     }
 
     public String getMethodName() {
@@ -50,7 +50,7 @@ public class Method {
     @Override
     public String toString() {
         return "Method{" +
-                "methodId=" + methodId +
+                "methodId=" + method_id +
                 ", methodName='" + methodName + '\'' +
                 ", drugName='" + drugName + '\'' +
                 ", drugDosage=" + drugDosage +

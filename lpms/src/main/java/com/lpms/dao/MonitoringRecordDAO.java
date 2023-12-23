@@ -18,7 +18,7 @@ public interface MonitoringRecordDAO {
     //查询数据异常的植物
     List<MonitoringRecordShow>listNotNormalMonitoringRecordShow();
     //查询数据异常的植物ID
-    List<Integer>listNotNormalMonitoringPlantid();
+    List<Integer> listNotNormalMonitoringPlantId();
 
     //查询所有植物的4个数据的平均值，最大值，最小值查询
     MonitoringStatistics getMonitoringStatistics();

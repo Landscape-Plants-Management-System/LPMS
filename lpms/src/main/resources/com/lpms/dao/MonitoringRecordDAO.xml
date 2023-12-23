@@ -30,9 +30,10 @@
         select * from mon_plant_user_device_v where mon_is_normal=0
     </select>
 
-    <select id="listNotNormalMonitoringPlantid" resultType="java.util.List">
-        select mon_plant_id from mon_plant_user_device_v where mon_is_normal = 0
+    <select id="listNotNormalMonitoringPlantId" resultType="int">
+        select mon_plant_id from monitoring_record where mon_is_normal = 0
     </select>
+
 
 <!--    MonitoringStatistics getMonitoringStatistics();-->
     <select id="getMonitoringStatistics" resultType="com.lpms.pojo.monitor.MonitoringStatistics">

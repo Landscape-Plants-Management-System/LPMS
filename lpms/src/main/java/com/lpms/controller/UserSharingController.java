@@ -2,10 +2,12 @@ package com.lpms.controller;
 
 import com.lpms.dao.ClassificationDao;
 import com.lpms.dao.DiseaseDao;
+import com.lpms.dao.PlantTaskDao;
 import com.lpms.dao.impl.DaoImpl;
 import com.lpms.pojo.User;
 import com.lpms.pojo.classification.*;
 import com.lpms.pojo.conserveTask.ConserveTask;
+import com.lpms.pojo.conserveTask.PlantTask;
 import com.lpms.pojo.disease.Disease;
 import com.lpms.pojo.disease.Method;
 import com.lpms.pojo.monitor.Device;
@@ -305,8 +307,7 @@ public class UserSharingController {
         newmethod.setDrugDosage(scanner.nextDouble());
         System.out.println("请输入作用期限");
         newmethod.setDrugTime(scanner.nextDouble());
-        int id=DaoImpl.methodDao.insertMethod(newmethod);
-        newmethod.setMethodId(id);
+        DaoImpl.methodDao.insertMethod(newmethod);
         newdisease.setMethod(newmethod);
         DaoImpl.diseaseDao.insertDisease(newdisease);
         List<Disease> diseases = DaoImpl.diseaseDao.getAllDiseases();
@@ -331,19 +332,26 @@ public class UserSharingController {
         conserveTask.setConserveTaskRequiretime(date);
         conserveTask.setConserveTaskUpdatetime(date);
         User user=new User();
+        PlantTask plantTask = new PlantTask();
         System.out.println("请输入执行人员编号");
         user.setUserId(scanner.nextInt());
         conserveTask.setUser(user);
-        int conserveTaskid=DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+        DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+        plantTask.setConserveTask_id(conserveTask.getConserveTask_id());
         System.out.println("请输入养护对象编号");
         int plantId=scanner.nextInt();
-        DaoImpl.conserveTaskDao.insertPlantTaskRelation(plantId,conserveTaskid);
+        plantTask.setPlantId(plantId);
+        DaoImpl.plantTaskDao.insertPlantTask(plantTask);
     }
 
     public void InsertUnnormalConserveTask()
     {
-        List<Integer> plantsId=DaoImpl.monitoringRecordDAO.listNotNormalMonitoringPlantid();
+        List<Integer> plantsId=DaoImpl.monitoringRecordDAO.listNotNormalMonitoringPlantId();
         for (int plantId: plantsId) {
+            PlantTask plantTask = new PlantTask();
+            plantTask.setPlantId(plantId);
+            System.out.println("该植物的信息为："+DaoImpl.plantDao.selectPlantById(plantId));
+            System.out.println("正在为其创建养护任务——");
             ConserveTask conserveTask =new ConserveTask();
             Scanner scanner=new Scanner(System.in);
             System.out.println("请输入养护任务名称");
@@ -360,8 +368,9 @@ public class UserSharingController {
             System.out.println("请输入执行人员编号");
             user.setUserId(scanner.nextInt());
             conserveTask.setUser(user);
-            int conserveTaskid=DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
-            DaoImpl.conserveTaskDao.insertPlantTaskRelation(plantId,conserveTaskid);
+            DaoImpl.conserveTaskDao.insertConserveTask(conserveTask);
+            plantTask.setConserveTask_id(conserveTask.getConserveTask_id());
+            DaoImpl.plantTaskDao.insertPlantTask(plantTask);
         }
     }
 
@@ -369,7 +378,9 @@ public class UserSharingController {
     {
         Scanner scanner=new Scanner(System.in);
         System.out.println("请输入要删除的任务编号");
-        DaoImpl.conserveTaskDao.deleteConserveTask(scanner.nextInt());
+        int conserveTask_id=scanner.nextInt();
+        DaoImpl.plantTaskDao.deletePlantTask(conserveTask_id);
+        DaoImpl.conserveTaskDao.deleteConserveTask(conserveTask_id);
     }
 
     public void DeleteDisease()
@@ -409,6 +420,7 @@ public class UserSharingController {
         ConserveTask conserveTask = DaoImpl.conserveTaskDao.getConserveTaskById(id);
         System.out.println("请选择需要更新的任务属性：1.任务名称 2.任务描述3.执行地点");
         int chooseFunction=scanner.nextInt();
+        scanner.nextLine();
         switch (chooseFunction){
             case 1:
                 conserveTask.setConserveTaskName(scanner.nextLine());
@@ -425,7 +437,7 @@ public class UserSharingController {
         }
         conserveTask.setConserveTaskUpdatetime( time );
         DaoImpl.conserveTaskDao.updateConserveTask(conserveTask);
-        System.out.println("养护任务执行完成，记录已更新！");
+        System.out.println("养护任务已更新！");
     }
 
     public void UpdateDisease(){//管理员更新病虫害
@@ -436,6 +448,7 @@ public class UserSharingController {
         Disease disease = DaoImpl.diseaseDao.getDiseaseById(id);
         System.out.println("请选择需要更新的病虫害属性：1.病虫害名称 2.防治方法");
         int chooseFunction=scanner.nextInt();
+        scanner.nextLine();
         switch (chooseFunction){
             case 1:
                 disease.setDiseaseName(scanner.nextLine());

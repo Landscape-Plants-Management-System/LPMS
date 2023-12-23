@@ -26,21 +26,16 @@
     <!-- 添加新的Disease的插入语句 -->
     <insert id="insertDisease" parameterType="com.lpms.pojo.disease.Disease">
         INSERT INTO disease (disease_name, method_id)
-        VALUES (#{diseaseName}, #{method.methodId})
-    </insert>
-    <insert id="insertDisease1">
-        INSERT INTO disease (disease_id,disease_name, method_id)
-        VALUES (#{diseaseId},#{diseaseName}, #{methodId})
+        VALUES (#{diseaseName}, #{method.method_id})
     </insert>
 
     <!-- 修改现有Disease的更新语句 -->
     <update id="updateDisease" parameterType="com.lpms.pojo.disease.Disease">
         UPDATE disease SET
                            disease_name = #{diseaseName},
-                           method_id = #{method.methodId}
+                           method_id = #{method.method_id}
         WHERE disease_id = #{diseaseId}
     </update>
-
     <!-- 通过ID删除Disease的删除语句 -->
     <delete id="deleteDisease" parameterType="int">
         DELETE FROM disease WHERE disease_id = #{diseaseId}

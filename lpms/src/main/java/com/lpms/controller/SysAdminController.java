@@ -470,45 +470,13 @@ public class SysAdminController {
         scanner.nextLine();
         switch (choose){
             case 1:
-                System.out.print("请输入需要添加的病虫害名称:");
-                String diseaseName = scanner.nextLine();
-                Disease check1 = DaoImpl.diseaseDao.getDiseaseByName(diseaseName);
-                if (check1==null)
-                {
-                    List<Method> methods=DaoImpl.methodDao.getAllMethods();
-                    for (int i=1;i<=methods.size();i++)
-                    {
-                        System.out.print(i);
-                        System.out.print(". ");
-                        System.out.print(methods.get(i).getMethodName());
-                        System.out.println();
-                    }
-                    System.out.print("请选择要使用的防治方法（输入序号）: ");
-                    int choose2=scanner.nextInt();
-                    if (choose2<=methods.size())
-                    {
-                        Integer methodId=choose2;
-                        List<Disease> diseases=DaoImpl.diseaseDao.getAllDiseases();
-                        Integer diseaseId=diseases.size()+1;
-                        DaoImpl.diseaseDao.insertDisease1(diseaseId,diseaseName,methodId);
-                    }
-                    System.out.print("插入成功！\n");
-                }else {
-                    System.out.println("该病虫害已录入过");
-                }
+                userSharingController.InsertDisease();
                 break;
             case 2:
-                System.out.print("请输入想要删除的病虫害名称:");
-                String name = scanner.nextLine();
-                Disease check2 = DaoImpl.diseaseDao.getDiseaseByName(name);
-                if (check2==null)
-                {
-                    System.out.println("删除失败！该病虫害不存在");
-                }else {
-
-                    DaoImpl.diseaseDao.deleteDisease(check2.getDiseaseId());
-                    System.out.print("删除成功！\n");
-                }
+                userSharingController.DeleteConserveTask();
+                break;
+            case 3:
+                userSharingController.UpdateDisease();
                 break;
             default:
                 System.out.println("输入错误");
@@ -547,7 +515,7 @@ public class SysAdminController {
                 {
                     System.out.println("删除失败！该防治方法不存在");
                 }else {
-                    DaoImpl.methodDao.deleteMethod(check2.getMethodId());
+                    DaoImpl.methodDao.deleteMethod(check2.getMethod_id());
                     System.out.print("删除成功！\n");
                 }
                 break;
