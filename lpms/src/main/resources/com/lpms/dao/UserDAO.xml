@@ -33,4 +33,8 @@
         SELECT * FROM user WHERE user_id = #{monUserId} and role_id=3
     </select>
 
+    <select id="getMonUserByRoleId" resultType="com.lpms.pojo.User">
+        SELECT * FROM user WHERE role_id = #{roleId}
+    </select>
+
 </mapper>

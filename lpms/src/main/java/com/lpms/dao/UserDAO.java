@@ -15,6 +15,7 @@ public interface UserDAO {
 
     User getUserById(int userId);
     User getMonUserById(@Param("monUserId")int monUserId);
+    List<User> getMonUserByRoleId(@Param("roleId")int roleId);
     /**
      * 增加
      */

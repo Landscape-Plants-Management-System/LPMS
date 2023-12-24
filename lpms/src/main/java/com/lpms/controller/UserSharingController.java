@@ -273,6 +273,28 @@ public class UserSharingController {
         }
     }
 
+    public void getAllUser(){
+        System.out.println("请选择：1.查询所有养护人员 2.查询所有监测人员");
+        Scanner scanner=new Scanner(System.in);
+        int chooseFunction=scanner.nextInt();
+        List<User> users;
+        switch (chooseFunction){
+            case 1:
+                users=DaoImpl.userDAO.getMonUserByRoleId(4);
+                break;
+            case 2:
+                users=DaoImpl.userDAO.getMonUserByRoleId(3);
+                break;
+            default:
+                users=null;
+                System.out.println("输入错误，请重新输入");
+                break;
+        }
+        for (User user:users) {
+            System.out.println(user);
+        }
+    }
+
     public void getAllConserveTask() {
         // 根据名字查询养护任务
         List<ConserveTask> conserveTasks = DaoImpl.conserveTaskDao.getAllConserveTasks();
